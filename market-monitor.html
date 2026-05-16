@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hong Kong Long Term Insurance Market Monitor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="top-nav" aria-label="Site navigation">
+      <a class="brand" href="index.html">Chen Liu, FIA</a>
+      <div>
+        <a href="resume.html">Profile</a>
+        <a href="insights.html">Insights</a>
+        <a href="market-monitor.html">Market Monitor</a>
+      </div>
+    </nav>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Chen Liu, FIA</p>
+        <h1>Hong Kong Long Term Insurance Market Monitor</h1>
+        <p class="lede">
+          IA provisional statistics, interpreted through an actuarial and market lens.
+        </p>
+      </div>
+      <div class="source-panel">
+        <span id="periodLabel">Loading...</span>
+        <a id="sourceLink" href="#" target="_blank" rel="noreferrer">IA source</a>
+        <a href="resume.html">Professional profile</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="takeaway-band" aria-labelledby="takeaway-title">
+        <div>
+          <p class="eyebrow">Chen's Take</p>
+          <h2 id="takeaway-title">The headline is growth. The question is quality.</h2>
+        </div>
+        <div class="takeaway-grid">
+          <article>
+            <h3>APE is useful, but incomplete</h3>
+            <p>
+              APE ranking should be read together with single premium reliance, channel mix,
+              and product class. The same headline APE can represent very different economics.
+            </p>
+          </article>
+          <article>
+            <h3>Participating business remains the centre of gravity</h3>
+            <p>
+              A market led by savings and whole life products makes bonus governance,
+              illustration discipline, and policyholder expectation management central issues.
+            </p>
+          </article>
+          <article>
+            <h3>Mainland visitor data needs a footnote</h3>
+            <p>
+              Separate 2025 Mainland visitor statistics are not available while IA reviews
+              non-local policyholder data collection. That absence is itself a market signal.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="kpi-grid" id="kpiGrid" aria-label="Market key metrics"></section>
+
+      <section class="section-grid two-col">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">NB Overview</p>
+              <h2>Product class mix</h2>
+            </div>
+            <p>APE basis</p>
+          </div>
+          <div id="productClassMix" class="stack-list"></div>
+          <aside class="note">
+            Participating business share is not just a sales statistic. It points to the
+            importance of par fund governance, investment return communication, and long
+            policyholder time horizons.
+          </aside>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Distribution</p>
+              <h2>Channel mix</h2>
+            </div>
+            <p>APE basis</p>
+          </div>
+          <div id="channelMix" class="stack-list"></div>
+          <aside class="note">
+            Channel mix gives the dashboard its market story. Bancassurance, brokers, and
+            agency channels usually carry different customer intent, product mix, and margin
+            profile.
+          </aside>
+        </article>
+      </section>
+
+      <section class="section-grid two-col">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Products</p>
+              <h2>Top product lines</h2>
+            </div>
+            <p>APE basis</p>
+          </div>
+          <div id="productBars" class="bar-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Currency</p>
+              <h2>Policy currency mix</h2>
+            </div>
+            <p>APE basis</p>
+          </div>
+          <div id="currencyMix" class="stack-list"></div>
+          <aside class="note">
+            USD business can be a proxy for customer asset allocation preference, especially
+            where savings-oriented policies are used beside deposits and investment products.
+          </aside>
+        </article>
+      </section>
+
+      <section class="panel full">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Key Players</p>
+            <h2>Top insurers by individual new business APE</h2>
+          </div>
+          <p>HKD billion</p>
+        </div>
+        <div id="insurerBars" class="bar-list wide"></div>
+        <aside class="note">
+          Ranking is the entry point, not the conclusion. A stronger read compares market
+          share with recurring premium share and channel concentration.
+        </aside>
+      </section>
+
+      <section class="panel full">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">In-force And Behaviour</p>
+            <h2>The second half of the story</h2>
+          </div>
+          <p>HKD billion</p>
+        </div>
+        <div id="behaviourGrid" class="mini-grid"></div>
+        <aside class="note">
+          New business momentum should be checked against renewal premiums, claims,
+          surrender benefits, and early-duration lapse activity. That is where sales growth
+          starts to meet policyholder behaviour.
+        </aside>
+      </section>
+
+      <section class="panel full">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Appendix</p>
+            <h2>Top player data table</h2>
+          </div>
+          <p>APE = AP + 10% SP</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Insurer</th>
+                <th>APE</th>
+                <th>Market share</th>
+                <th>Annualized premium</th>
+                <th>Single premium</th>
+                <th>Recurring share</th>
+              </tr>
+            </thead>
+            <tbody id="appendixRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Source: Insurance Authority provisional long term business statistics.
+        Figures are unaudited and shown for market commentary only.
+      </p>
+    </footer>
+
+    <script src="data/market-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
