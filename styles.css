@@ -681,3 +681,51 @@ footer {
     min-height: 300px;
   }
 }
+
+
+.workflow-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f1f4f2;
+}
+
+.workflow-flow span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 720;
+}
+
+.article-table-wrap {
+  overflow-x: auto;
+  margin-top: 24px;
+}
+
+.article-table {
+  min-width: 760px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.article-table th,
+.article-table td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-table td {
+  color: #3d454c;
+  line-height: 1.5;
+}

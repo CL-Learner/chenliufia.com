@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Can Build the Engine | Chen Liu, FIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="article-page">
+    <nav class="top-nav" aria-label="Site navigation">
+      <a class="brand" href="../index.html">Chen Liu, FIA</a>
+      <div>
+        <a href="../resume.html">Profile</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../market-monitor.html">Market Monitor</a>
+      </div>
+    </nav>
+
+    <header class="article-hero">
+      <p class="eyebrow">AI / Asset Analytics / BMA Reporting</p>
+      <h1>AI Can Build the Engine. The Actuary Must Design the Control Room.</h1>
+      <p class="lede">A practical case study on asset cashflows, Z-spreads and KRDs.</p>
+      <p class="article-meta">Chen Liu, FIA · 2 June 2026</p>
+    </header>
+
+    <main class="article-main">
+      <article class="article-body">
+        <p>The most interesting part of applying AI to actuarial work is not whether AI can write code.</p>
+        <p>It can.</p>
+        <p>The more important question is whether the actuary knows what should be built, where the risks are, which parts can be delegated safely, and which parts must remain under professional control.</p>
+        <p>That distinction matters. Without it, AI does not create a better actuarial process. It may simply help us build a larger and more complicated black box, faster than before.</p>
+        <p>I recently worked on an asset key rate duration tool for regulatory reporting. The tool projects bond cashflows, calibrates Z-spreads, revalues assets under key rate shocks, and produces portfolio-level KRD outputs. The coding work was accelerated significantly with AI assistance. But the real value of the exercise was not the macro itself.</p>
+        <p>The real value was in designing the workflow.</p>
+        <h2>The Reporting Problem</h2>
+        <p>For many insurers, asset cashflow projection and Z-spread analysis already exist in some form. They may be used for different reporting purposes, such as local capital reporting, matching adjustment analysis, asset model point generation, or internal asset-liability management.</p>
+        <p>The difficulty is that these processes are often separated.</p>
+        <p>One workbook prepares asset cashflows. Another calculates Z-spreads. A third file creates model points. A separate process may be used for stress testing or sensitivity analysis. Each step may work, but the overall process can become fragmented.</p>
+        <p>That fragmentation becomes a problem when a new reporting requirement asks for an integrated view.</p>
+        <p>In this case, the BMA reporting process required asset and liability KRD information to be included in the LLSBA process for both SBA and SA firms. For the asset side, this created a practical need:</p>
+        <ul><li>read bond-level asset data;</li><li>project future cashflows;</li><li>calibrate Z-spreads using the relevant discount curve;</li><li>revalue assets under selected key rate shocks;</li><li>produce KRD outputs; and</li><li>validate whether the results are broadly reasonable.</li></ul>
+        <p>This is not only a calculation problem. It is a workflow design problem.</p>
+        <h2>From Separate Steps To One Controlled Process</h2>
+        <p>The objective was to bring the key steps into one process.</p>
+        <p>At a high level, the tool follows this sequence:</p>
+        <div class="workflow-flow"><span>Asset data</span><span>Cashflow projection</span><span>Base discount curve</span><span>Z-spread calibration</span><span>Base MV reconciliation</span><span>Key tenor shocks</span><span>Revalue cashflows</span><span>KRD output</span><span>Validation and actuarial review</span></div>
+        <p>The inputs are deliberately familiar: bond identifier, currency, market value, notional, coupon information, maturity date, call information where relevant, and the discount curves used for valuation. The outputs are also familiar: projected cashflows, calibrated Z-spreads, shocked market values, and KRDs by selected tenors.</p>
+        <p>What changes is the way the process is controlled.</p>
+        <p>Instead of treating cashflow projection, spread calibration and sensitivity calculation as separate exercises, the tool links them. The same asset data feeds the projection. The projected cashflows feed the Z-spread calibration. The calibrated spread is then used consistently when revaluing under shocked curves. The outputs are collected in one place so that the results can be reviewed, challenged and explained.</p>
+        <p>This is particularly useful when the same framework can also be adapted for other purposes. For example, by replacing the BMA discount curves with HKRBC curves, the same structure can be used to replicate RBC-style Z-spread calculations.</p>
+        <p>That does not mean the tool becomes a universal valuation engine. It means the process is transparent enough to be reused with care.</p>
+        <h2>What AI Was Good At</h2>
+        <p>AI was useful in the build.</p>
+        <p>Once the actuarial workflow was defined clearly, an AI coding agent could help generate the VBA structure needed to automate the process. It could create loops, read asset records, populate cashflow schedules, run repeated calculations, organise output tables, and help debug the mechanics.</p>
+        <p>This is exactly the kind of work where AI can be powerful.</p>
+        <p>The task is technical, repetitive, and detail-heavy. It benefits from speed. It also benefits from an agent that can hold a structure in mind and turn a sequence of instructions into working code.</p>
+        <p>In a traditional spreadsheet environment, a significant amount of time can be lost not because the actuarial concept is difficult, but because the implementation is tedious: copying formula blocks, maintaining consistent ranges, adding columns, handling multiple tenors, and checking whether outputs are written to the correct place.</p>
+        <p>AI can reduce that friction.</p>
+        <p>Some tasks are also safer to delegate because they are tightly testable. For example, reading bond data, reading the discount curve, solving for a Z-spread, and revaluing cashflows under stressed curves are all mechanical tasks with clear input-output relationships. The Z-spread calibration, in particular, has a natural closed-loop check: when the solved spread is applied back to the projected cashflows and discount curve, the repriced value should reconcile to the observed market value within an acceptable tolerance.</p>
+        <p>That does not make the task trivial. It means the task can be tested. AI can help implement the calculation and repair errors exposed by reconciliation, but the control expectation has to be specified by the actuary.</p>
+        <p>But this is only safe when the actuary has already defined the destination.</p>
+        <h2>What AI Was Not Allowed To Decide</h2>
+        <p>AI did not decide what the regulatory requirement meant.</p>
+        <p>AI did not decide which curve basis should be used.</p>
+        <p>AI did not decide whether a Z-spread was reasonable.</p>
+        <p>AI did not decide whether the KRD profile made sense for the portfolio.</p>
+        <p>Those are actuarial responsibilities.</p>
+        <p>This is the central lesson from the exercise. AI can build the engine, but the actuary must design the control room.</p>
+        <p>For this tool, the actuarial control layer included questions such as:</p>
+        <ul><li>Does the repriced dirty market value reconcile back to the input market value?</li><li>Do shocked market values move in the expected direction?</li><li>Does the KRD profile broadly reflect the maturity and cashflow profile of the assets?</li><li>Are long-tenor sensitivities plausible, especially where cashflows extend to 20 or 30 years?</li><li>Are callable features, maturity dates and coupon assumptions treated consistently enough for the intended purpose?</li><li>Does the sum of KRDs broadly reconcile to an effective-duration-style measure?</li><li>If a result looks unusual, is the cause data, methodology, curve construction, optionality, or code?</li></ul>
+        <p>These are not cosmetic checks. They are the difference between a useful tool and a dangerous one.</p>
+        <h2>Delegation Map</h2>
+        <p>The practical question is not whether to use AI. The practical question is where to use it.</p>
+        <p>In this case, the delegation boundary looked something like this:</p>
+        <div class="article-table-wrap"><table class="article-table"><thead><tr><th>Area</th><th>AI can assist</th><th>Actuary must control</th></tr></thead><tbody><tr><td>Regulatory requirement</td><td>Draft summary, organise notes</td><td>Interpret purpose and reporting implication</td></tr><tr><td>Workflow design</td><td>Translate steps into code structure</td><td>Define calculation sequence and control points</td></tr><tr><td>VBA automation</td><td>Generate loops, output tables, repetitive mechanics</td><td>Review logic, test edge cases, approve methodology</td></tr><tr><td>Cashflow projection</td><td>Build schedule generation mechanics</td><td>Confirm product features and assumptions</td></tr><tr><td>Z-spread calibration</td><td>Automate solver process</td><td>Assess reasonableness and reconciliation</td></tr><tr><td>KRD calculation</td><td>Run repeated shocked valuations</td><td>Define tenors, shocks and validation expectation</td></tr><tr><td>Documentation</td><td>Draft process notes</td><td>Ensure accuracy and appropriate caveats</td></tr></tbody></table></div>
+        <p>This boundary is important.</p>
+        <p>If too little is delegated, AI becomes a novelty. If too much is delegated, the process becomes unsafe. The value comes from controlled delegation: using AI where it is efficient, while keeping actuarial judgement where it belongs.</p>
+        <h2>Validation Is Part Of The Design</h2>
+        <p>One of the most important parts of the tool is not the calculation of KRDs itself, but the validation around it.</p>
+        <p>A KRD table can look neat and still be wrong. A macro can run without error messages and still be based on an incorrect maturity date, a misapplied curve, an incomplete cashflow projection, or a shock that is not being applied as intended.</p>
+        <p>For that reason, the tool includes checks such as market value reconciliation after Z-spread calibration and comparison of KRD outputs against a broader duration measure.</p>
+        <p>The duration comparison is not expected to be perfect. A small set of regulatory tenors, such as 2, 5, 10, 20 and 30 years, cannot capture every shape of the yield curve. Interpolation is needed to estimate sensitivities between key points. Callable features, curve extrapolation, shock size and non-linear effects can all create differences.</p>
+        <p>But the comparison is still valuable.</p>
+        <p>It gives the reviewer a sense of scale. If the sum of KRDs is broadly consistent with effective duration, the result has passed one important reasonableness check. If it is not, the difference may still be explainable, but it must be explained.</p>
+        <p>That is actuarial control in practice. The purpose of the check is not to prove that the tool is perfect. The purpose is to force the result to make sense.</p>
+        <p>The same principle applies to the interpretation of asset and liability KRDs. Suppose the asset KRDs diverge significantly from the liability KRDs beyond 30 years. That may be a modelling error, but it may also be economically reasonable. Asset cashflows after 30 years may be thin, while the liability profile may remain more long-tailed. In that situation, the actuarial task is not only to ask the AI to recalculate. It is to understand whether the mismatch is real, decide whether the validation evidence is sufficient, and explain the implication clearly to management.</p>
+        <p>This is the part of the process that should not be outsourced. AI can generate numbers, charts and diagnostics. The actuary must decide whether the result is credible, what it means for ALM risk, and how to communicate it to a CFO or reviewer.</p>
+        <h2>Future Refinements</h2>
+        <p>The current version is a working analytical tool, not a finished product.</p>
+        <p>There are obvious areas for refinement.</p>
+        <p>First, the key tenor design could be made more flexible. The current regulatory tenors can remain as the default, but the tool could allow users to specify additional tenors for internal ALM, validation or management reporting. A simple configuration table could make the macro less hard-coded and more adaptable.</p>
+        <p>Second, the validation section could be expanded. A useful enhancement would be to calculate portfolio effective duration under a parallel curve shock and compare it with an expanded KRD set, for example annual tenors from 1 to 50 years. This would create a stronger validation bridge between key rate sensitivities and total duration.</p>
+        <p>Third, the user interface could be cleaned further so that inputs, assumptions, outputs and checks are clearly separated. This matters if the tool is to be used repeatedly, reviewed by others, or adapted for future reporting cycles.</p>
+        <p>These refinements are worth doing, but they should not distract from the main lesson.</p>
+        <p>A tool does not need to be perfect to be useful. It needs to be controlled, understandable, and honest about its limitations.</p>
+        <h2>The Broader Lesson</h2>
+        <p>This case study is about asset KRDs, but the lesson is broader.</p>
+        <p>Many actuarial processes have the same shape. A new requirement arrives. Existing processes partly cover the need, but not cleanly. Data is available, but not in the right structure. Calculations exist, but are scattered. Validation is possible, but not embedded. Documentation is incomplete because the process evolved under time pressure.</p>
+        <p>AI can help in these situations.</p>
+        <p>But only if the actuary first understands the full process:</p>
+        <ul><li>the purpose of the requirement;</li><li>the data needed;</li><li>the methodology choices;</li><li>the output users;</li><li>the validation checks; and</li><li>the points where judgement is required.</li></ul>
+        <p>Without that understanding, AI may simply make it easier to produce a black box.</p>
+        <p>With that understanding, AI can become a practical accelerator. It can help convert actuarial design into a repeatable workflow, reduce implementation time, and make intermediate outputs easier to review.</p>
+        <p>The actuarial value is not in typing code faster. The value is in knowing what the code should do, what it should not do, and how to challenge the result when it looks too easy to accept.</p>
+        <p>AI accelerated the build.</p>
+        <p>Actuarial judgement defined the problem, challenged the output, and made the tool usable.</p>
+        <p>That is the relationship I want to keep exploring.</p>
+        <p class="article-note">Note: This article is based on a mock asset dataset and a generalised workflow. Company-specific assets, curves, assumptions, reporting figures and confidential implementation details have been intentionally omitted or generalised.</p>
+      </article>
+    </main>
+
+    <footer>
+      <p>Articles are based on practical experience. Confidential details are omitted or generalised.</p>
+    </footer>
+  </body>
+</html>
