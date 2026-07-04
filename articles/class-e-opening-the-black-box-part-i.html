@@ -95,7 +95,7 @@
             <tr><td>Sch XX / XXA</td><td>Currency risk: assets and liabilities by currency before and after shock, hedging arrangements</td><td>Currency Risk calc (CCur) — 25% shock on unhedged net position</td><td>Hedging column frequently left blank, overstating CCur for firms with natural currency matches</td></tr>
             <tr><td>Sch V(a)–V(m)</td><td>Risk management sub-schedules: governance (Va), counterparties and intra-group (Vc), stress tests (Ve), stat-to-EBS reconciliation (Vg)</td><td>Op Risk CIRA score → Cop capital charge; DV Dashboard compliance checks</td><td>CIRA responses are capital-generating inputs. Leaving them blank causes the operational risk charge to reach its regulatory cap</td></tr>
           </tbody></table></div>
-        <p>Layer two — risk charge calculation worksheets</p>
+        <h2>Layer two — risk charge calculation worksheets</h2>
         <p>The calculation layer consists of named worksheets that apply capital factors to the input data and produce individual risk charges. These are not embedded within the schedule tabs — they are standalone calculation sheets that feed the Summary. The table below lists every material risk charge in the YE25 Summary, its worksheet, and its primary source.</p>
         <div class="article-table-wrap"><table class="article-table">
           <thead><tr><th>Risk charge (code)</th><th>Calculation sheet</th><th>Primary input</th><th>Key design point</th></tr></thead>
@@ -113,7 +113,7 @@ Sch XXIII: Shock-Based Approach</td><td>Duration-Based approach. ALM credit redu
             <tr><td>VA guarantee risk (CLTVA)</td><td>LT Variable Annuity Gte Risk</td><td>Sch VIII (EBS): guarantee BEL by volatility bucket</td><td>Three volatility buckets. Blank for firms without VA books</td></tr>
             <tr><td>Operational risk (Cop)</td><td>Op Risk (Revised)</td><td>Sch V(a)–V(m) CIRA score; asset base from Summary</td><td>CIRA score is a qualitative multiplier. Blank responses maximise the charge</td></tr>
           </tbody></table></div>
-        <p>Layer three — outputs</p>
+        <h2>Layer three — outputs</h2>
         <p>The output layer has three components produced simultaneously from the same underlying data. A single input error can affect all three at once.</p>
         <p>Form 4EBS — the economic balance sheet</p>
         <p>Assets (lines 1–15)  minus  BEL (line 27d)  minus  Risk Margin (line 27A)  minus  Other liabilities (line 38)  equals  Statutory economic capital and surplus (line 40). Line 40 is the starting point for Schedule XII(a), which derives eligible capital after Tier 1 and Tier 2 classifications and deductions for encumbered assets. The solvency ratio numerator is eligible capital, not line 40 itself.</p>
