@@ -683,6 +683,32 @@ footer {
 }
 
 
+.article-figure {
+  margin: 28px 0 8px;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.article-figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.wide-figure {
+  width: min(1100px, calc(100vw - 44px));
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .workflow-flow {
   display: flex;
   flex-wrap: wrap;

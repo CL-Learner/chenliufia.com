@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Class E: Opening the Black Box | Chen Liu, FIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="article-page">
+    <nav class="top-nav" aria-label="Site navigation">
+      <a class="brand" href="../index.html">Chen Liu, FIA</a>
+      <div>
+        <a href="../resume.html">Profile</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../market-monitor.html">Market Monitor</a>
+      </div>
+    </nav>
+
+    <header class="article-hero">
+      <p class="eyebrow">BMA / Class E / Solvency Reporting</p>
+      <h1>Class E: Opening the Black Box</h1>
+      <p class="lede">Part I — Architecture Mapping. How the YE25 schedules connect, what they feed, and why the form resists intuition.</p>
+      <p class="article-meta">Chen Liu, FIA · July 2026</p>
+    </header>
+
+    <main class="article-main">
+      <article class="article-body">
+        <p class="article-note">Scope note: This article assumes a standard life insurer with no variable annuity materiality unless otherwise noted. Specific treatments for captive reinsurers, pure reinsurers, or firms under transitional arrangements may differ. Readers should consult the latest BMA guidance for their specific circumstances.</p>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th></th><th>A finance manager once rushed over mid-reporting cycle: the BSCR ratings on the top ten cash holdings had been entered incorrectly. Did it matter? How much? Without a clear map of how information flows through the Class E form, that question has no quick answer.</th></tr></thead>
+          <tbody>
+          </tbody></table></div>
+        <p>The answer is contained entirely in the architecture. Under the YE25 BSCR framework, cash and cash equivalents reported in Schedule XIX/XIXA primarily drive Fixed Income Investment Risk (Cfi) through BSCR ratings. They may also affect concentration risk if one or more cash counterparties appear in the top-ten concentration schedules, Schedule XXI/XXIA. They do not normally generate a separate counterparty default charge within the Credit Risk module. The correction therefore changes the capital requirement, but it would not normally refresh the Risk Margin or EBS surplus. The solvency ratio changes from one direction only.</p>
+        <p>That diagnostic took about ten seconds. It would have taken considerably longer without a mental map of where each piece of data goes and what it is connected to.</p>
+        <p>This article builds that map explicitly, based on the actual YE25 Class E BSCR form. It is organised in three layers — inputs, calculations, and outputs — and ends with a preview of the most common points of failure, which are covered in Part II.</p>
+        <h2>Why the form resists intuition</h2>
+        <p>The Class E form is not a single calculation. It is closer to a set of interlocking models that happen to share a reporting template. Assets are valued on an Economic Balance Sheet basis, not GAAP. Liabilities are discounted using BMA-prescribed risk-free curves. The capital requirement is built from risk charges across multiple categories, adjusted for diversification, with further adjustments for management actions and non-insurance regulated entities. Each step draws from a different schedule, and several schedules feed more than one output simultaneously.</p>
+        <p>Schedule numbers do not correspond to the order in which things should be computed. The dependencies between schedules are not shown anywhere in the template itself. A practitioner working through the form — even one who has done it before — often discovers a linkage only after seeing the consequences of an error.</p>
+        <p>Two features of the architecture are particularly disorienting. First, the EBS balance sheet and the BSCR capital requirement are calculated in parallel, not in sequence. Changes to the same underlying data can move both simultaneously and in directions that partially cancel. Second, the Risk Margin, which sits on the liability side of the EBS, has no direct connection to hedgeable financial risk charges. Under the YE25 framework, changes to non-hedgeable risk drivers – Ccred (excluding credit risk on listed fixed income securities that can be hedged in active markets), insurance risks, or operational risk - may require a Risk Margin refresh; a change to fixed income, concentration, or currency risk normally does not. As a simplifying convention, this article groups operational risk with non-hedgeable risk drivers when discussing Risk Margin sensitivity, although its mechanics differ from insurance liability run-off risks. Knowing which side of this boundary a change falls on is the first diagnostic question.</p>
+        <p>The architecture map below is designed to make both features visible before you start filling in cells.</p>
+        <h2>Quick Index</h2>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>If you want to know...</th><th>Go to...</th></tr></thead>
+          <tbody>
+            <tr><td>Which asset goes to which risk module</td><td>Layer one tables (Asset data inputs)</td></tr>
+            <tr><td>Which risk charge is driven by which schedule</td><td>Layer two table (Risk charge calculation sheets)</td></tr>
+            <tr><td>What happens when a specific data point is wrong</td><td>Layer one tables (Error impact column)</td></tr>
+            <tr><td>How the EBS and BSCR interact</td><td>The dual-effect problem section</td></tr>
+            <tr><td>What the regulator looks at first</td><td>DV Dashboard section</td></tr>
+          </tbody></table></div>
+        <h2>The three-layer architecture</h2>
+        <p>The YE25 Class E form contains 133 worksheets. The ones that matter for understanding information flow fall into three layers: data input schedules, risk charge calculation worksheets, and outputs. The diagram below shows the complete picture, followed by detailed mapping tables for each layer.</p>
+        <p class="article-note">Figure 1 — YE25 Class E form: three-layer architecture. Teal = input schedules; purple = risk charge calculation sheets; coral = concentration, credit and operational risk; blue = outputs. Green dashed arrows show EBS balance sheet flows; grey arrows show capital calculation flows.</p>
+        <figure class="article-figure wide-figure">
+          <a href="../assets/articles/class-e-architecture-map.png" target="_blank" rel="noopener">
+            <img src="../assets/articles/class-e-architecture-map.png" alt="YE25 Class E form three-layer architecture map showing input schedules, calculation worksheets, and output layers" />
+          </a>
+          <figcaption>Click the diagram to open a larger version.</figcaption>
+        </figure>
+        <h2>Layer one — data input schedules</h2>
+        <p>The input layer is where raw data enters the form. It divides into asset-side and liability-side inputs, with Schedule XVIII sitting across both because it captures reinsurance counterparty exposure that affects credit risk as well as the net EBS liability position.</p>
+        <h3>Asset data inputs</h3>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Schedule</th><th>Content</th><th>Feeds into (calc sheet)</th><th>Error impact</th></tr></thead>
+          <tbody>
+            <tr><td>Sch II (EBS) + IIA (EBS)</td><td>All bonds and equities by BSCR rating 0–8, including funds in segregated accounts</td><td>Fixed Income Investments (Cfi), Equity Investments (Ceq), Form 4EBS</td><td>Rating error changes the capital factor and rating-bucket allocation; total EBS asset value may still reconcile, which makes the error harder to detect</td></tr>
+            <tr><td>Sch IIB (EBS)</td><td>Bonds, RMBS, CMBS/ABS, bond funds, mortgage loans by BSCR rating on EBS basis</td><td>Fixed Income Investments (Cfi); Form 4EBS lines 2(b) and 3(b)</td><td>Investment Reconciliation cross-check flags mismatches with Form 4EBS automatically</td></tr>
+            <tr><td>Sch IID / IIE / IIF (EBS)</td><td>Segregated accounts (IID), deposit assets (IIE), sundry assets (IIF)</td><td>Form 4EBS lines 77–84; Investment Reconciliation look-through</td><td>Omission understates EBS asset total; sundry assets test LT_5_2 will fail</td></tr>
+            <tr><td>Sch XII(a) (EBS)</td><td>Eligible capital: Tier 1 and Tier 2 breakdown, encumbered asset deductions</td><td>Solvency ratio numerator; DV ratio LT_1_3 (Tier 1 percentage)</td><td>Encumbered assets not deducted → eligible capital overstated → solvency ratio inflated</td></tr>
+            <tr><td>Sch VI family</td><td>Granular asset disclosure; security-level BSCR rating, face value, fair value.</td><td>Cross-check vs Sch II / IIB; consistency check LT_3_7</td><td>Must reconcile to Form 1SFS and Form 4EBS totals; Sch VI (Check) provides an additional internal asset-schedule tie-out</td></tr>
+            <tr><td>Sch XIX / XIXA</td><td>Cash and cash equivalent counterparty balances by BSCR rating, including top cash exposures and remaining balances by rating bucket</td><td>Fixed Income Investments (Cfi); possible concentration impact only if the counterparty also appears in Sch XXI/XXIA</td><td>Wrong or missing BSCR ratings change Cfi. If a cash counterparty enters the top-ten concentration list, it may separately affect CCon; otherwise there is normally no separate Ccred impact under the YE25 framework. Exception: if the same counterparty is also a reinsurer or OTC derivative counterparty with a separate credit exposure, that separate exposure may generate a Ccred charge. The cash itself does not.</td></tr>
+          </tbody></table></div>
+        <h3>Liability data inputs</h3>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Schedule</th><th>Content</th><th>Feeds into</th><th>Error impact</th></tr></thead>
+          <tbody>
+            <tr><td>Sch VII (EBS)</td><td>EBS BEL by product: mortality, critical illness, longevity (age-banded), disability. BBNI, SBA BEL, and transitional BEL columns. Links to Form 4EBS note lines 27(d)(i–vii)</td><td>LT Insurance Risk calc (NAR-based and BEL-based charges); Lapse Risk base; Form 4EBS liability</td><td>Dual impact: BEL error moves both EBS surplus and insurance risk capital simultaneously</td></tr>
+            <tr><td>Sch VIII (EBS)</td><td>Variable annuity guarantee BEL only — GMDB, GMIB — bucketed by fund volatility: 0–10%, 10–15%, above 15%</td><td>LT Variable Annuity Gte Risk (CLTVA); Form 4EBS</td><td>Wrong volatility bucket changes capital factor materially; blank for firms with no VA book</td></tr>
+            <tr><td>Sch VIIA (EBS)</td><td>Lapse stress results: lapse-up, lapse-down, and mass lapse by market. Pre- and post-stress assets and liabilities with and without management actions</td><td>Lapse Risk calc sheet → CLTLapse in Summary</td><td>Three distinct shocks; worst-case taken. Mass lapse floor applies; retail and non-retail treated differently</td></tr>
+            <tr><td>Sch VIIB (EBS)</td><td>Expense stress: per-region pre- and post-stress liabilities with relative and absolute inflation shocks</td><td>Expense Risk calc sheet → CLTExps in Summary</td><td>Duration-dependent inflation assumption; often underestimated for long-tail books</td></tr>
+            <tr><td>Risk Margin Info</td><td>Risk Margin estimated using 24YE BSCR rules — cost-of-capital run-off projection of non-hedgeable risks</td><td>Form 4EBS line 27A — EBS liability total only</td><td>Affects EBS surplus only, not BSCR directly. Non-hedgeable risk-driver changes (including credit risk from reinsurance counterparty default, but excluding credit risk on listed fixed income securities that can be hedged) may require RM refresh; hedgeable market and concentration risk changes normally do not</td></tr>
+          </tbody></table></div>
+        <p>Reinsurance, counterparty, and concentration</p>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Schedule</th><th>Content</th><th>Feeds into</th><th>Classic error</th></tr></thead>
+          <tbody>
+            <tr><td>Sch XVIII (EBS)</td><td>Top 10 reinsurers: BSCR rating, RI assets per Form 4EBS lines 11(e)/12(c)/27(c), RI payable, collateral, qualifying collateral, net qualifying exposure</td><td>Credit Risk calc sheet (Ccred) — counterparty default charge</td><td>Wrong reinsurer BSCR rating changes credit charge. Qualifying collateral column frequently left at zero, forfeiting all credit risk reduction</td></tr>
+            <tr><td>Sch XXI / XXIA</td><td>Top 10 single-name / counterparty exposures on unconsolidated and EBS basis, including BSCR rating and asset value</td><td>Concentration Risk calc sheet (CCon) - sensitive above the applicable regulatory thresholds</td><td>Rating errors can become highly sensitive once exposures exceed the applicable regulatory thresholds. Cash counterparties affect this only if they enter the Sch XXI/XXIA top-ten set</td></tr>
+          </tbody></table></div>
+        <p>ALM, currency, and risk management</p>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Schedule</th><th>Content</th><th>Feeds into</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>Sch XXIII</td><td>Interest rate sensitive assets and liabilities: down-shock by currency, before and after shock, derivative exposures qualifying vs non-qualifying</td><td>Interest Rate-Liquidity Risk (CLTint) — 200bp shock with duration mismatch ALM credit</td><td>Good asset-liability matching is rewarded: the ALM credit reduces CLTint directly</td></tr>
+            <tr><td>Sch XX / XXA</td><td>Currency risk: assets and liabilities by currency before and after shock, hedging arrangements</td><td>Currency Risk calc (CCur) — 25% shock on unhedged net position</td><td>Hedging column frequently left blank, overstating CCur for firms with natural currency matches</td></tr>
+            <tr><td>Sch V(a)–V(m)</td><td>Risk management sub-schedules: governance (Va), counterparties and intra-group (Vc), stress tests (Ve), stat-to-EBS reconciliation (Vg)</td><td>Op Risk CIRA score → Cop capital charge; DV Dashboard compliance checks</td><td>CIRA responses are capital-generating inputs. Leaving them blank causes the operational risk charge to reach its regulatory cap</td></tr>
+          </tbody></table></div>
+        <p>Layer two — risk charge calculation worksheets</p>
+        <p>The calculation layer consists of named worksheets that apply capital factors to the input data and produce individual risk charges. These are not embedded within the schedule tabs — they are standalone calculation sheets that feed the Summary. The table below lists every material risk charge in the YE25 Summary, its worksheet, and its primary source.</p>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Risk charge (code)</th><th>Calculation sheet</th><th>Primary input</th><th>Key design point</th></tr></thead>
+          <tbody>
+            <tr><td>Fixed income risk (Cfi)</td><td>Fixed Income Investments</td><td>Sch II / IIA / IIB-IIF as applicable for fixed income exposures; Sch XIX/XIXA for cash and cash equivalents by BSCR rating</td><td>Capital factors range from 0% (BSCR 0) to 35% (BSCR 8). Rating is the single most leveraged input on the asset side</td></tr>
+            <tr><td>Equity risk (Ceq)</td><td>Equity Investments</td><td>Sch II (EBS): equities, grandfathered and non-grandfathered split</td><td>Grandfathered equities carry reduced factors. Misclassification is binary and documentation-dependent</td></tr>
+            <tr><td>Interest rate / liquidity risk (CLTint)</td><td>Interest Rate-Liquidity Risk</td><td>Sch V: Duration-Based Approach
+Sch XXIII: Shock-Based Approach</td><td>Duration-Based approach. ALM credit reduces the charge when asset and liability durations are well matched</td></tr>
+            <tr><td>Currency risk (CCur)</td><td>Currency Risk</td><td>Sch XX / XXA: net positions by currency after hedges</td><td>25% shock on unhedged net. Natural hedges must be reflected explicitly; the schedule does not assume them</td></tr>
+            <tr><td>Concentration risk (CCon)</td><td>Concentration Risk</td><td>Sch XXI / XXIA: top 10 single-name exposures</td><td>Concentration capital becomes highly sensitive once exposures exceed the applicable regulatory thresholds. Rating or exposure errors near those thresholds can have a disproportionate impact</td></tr>
+            <tr><td>Credit risk (Ccred)</td><td>Credit Risk</td><td>Receivables / other receivables from Form 4EBS or statutory source lines; reinsurance balances and recoverables from Sch XVIII; OTC derivatives from Sch IIB-IIF</td><td>Reinsurance collateral and qualifying exposure fields drive net exposure. Under the YE25 framework, cash in Schedule XIX/XIXA does not normally generate a separate Ccred charge. Exception: OTC derivative counterparty default risk is captured separately via CCROTC/OTC derivative credit calculation.</td></tr>
+            <tr><td>Mortality / longevity / disability (CLTmort etc.)</td><td>LT Insurance Risk</td><td>Sch VII (EBS): NAR by tier, BEL by product and age band</td><td>Five sub-charges aggregated here. NAR-based for mortality/CI, BEL-based for longevity/disability</td></tr>
+            <tr><td>Lapse risk (CLTLapse)</td><td>Lapse Risk</td><td>Sch VIIA (EBS): three shocks, worst-case applied</td><td>Lapse-up, lapse-down, mass lapse. Floor applies. Retail and non-retail treated differently</td></tr>
+            <tr><td>Expense risk (CLTExps)</td><td>Expense Risk</td><td>Sch VIIB (EBS): per-region inflation stress</td><td>Relative and absolute inflation shock. Duration-dependent calibration</td></tr>
+            <tr><td>VA guarantee risk (CLTVA)</td><td>LT Variable Annuity Gte Risk</td><td>Sch VIII (EBS): guarantee BEL by volatility bucket</td><td>Three volatility buckets. Blank for firms without VA books</td></tr>
+            <tr><td>Operational risk (Cop)</td><td>Op Risk (Revised)</td><td>Sch V(a)–V(m) CIRA score; asset base from Summary</td><td>CIRA score is a qualitative multiplier. Blank responses maximise the charge</td></tr>
+          </tbody></table></div>
+        <p>Layer three — outputs</p>
+        <p>The output layer has three components produced simultaneously from the same underlying data. A single input error can affect all three at once.</p>
+        <p>Form 4EBS — the economic balance sheet</p>
+        <p>Assets (lines 1–15)  minus  BEL (line 27d)  minus  Risk Margin (line 27A)  minus  Other liabilities (line 38)  equals  Statutory economic capital and surplus (line 40). Line 40 is the starting point for Schedule XII(a), which derives eligible capital after Tier 1 and Tier 2 classifications and deductions for encumbered assets. The solvency ratio numerator is eligible capital, not line 40 itself.</p>
+        <p>Summary — BSCR and ECR</p>
+        <p>The Summary aggregates all risk charges into the BSCR before and after the covariance adjustment using the 2024 YE correlation matrix. It then applies operational risk and capital adjustments, including Cadj and management action / loss-absorbing capacity items according to the model sign convention, to produce the final BSCRLT / ECR measure. The Summary maintains parallel calculations for the 2018, 2019, and 2024 year-end methodologies during the transitional period.</p>
+        <p>DV Dashboard — the regulator&#x27;s view</p>
+        <p>The Data Validation Dashboard scores submissions against the Bermuda Class E market on approximately thirty named ratios. Three deserve particular attention because they benchmark your numbers against the full population:</p>
+        <p>LT_1_10 — diversified BSCR divided by undiversified BSCR. An outlier ratio suggests unusual risk concentration or correlation and attracts supervisory attention.</p>
+        <p>LT_3_8 — proportion of bonds in BSCR rating buckets 0–4. Benchmarked against all 2024 submissions, a low proportion indicates a portfolio weighted toward lower-quality assets.</p>
+        <p>LT_4_1 and LT_4_2 — duration gap: asset duration minus liability duration. Read directly by the regulator. An unexplained year-on-year swing will prompt questions in the supervisory review cycle.</p>
+        <p>Filing a technically correct form that scores as a market outlier on the dashboard is not the same as filing well. The DV Dashboard is the regulator&#x27;s first filter.</p>
+        <h2>The dual-effect problem</h2>
+        <p>The architecture contains several schedules where a single input error moves both the numerator and denominator of the solvency ratio in the same direction. These are the most dangerous errors in the form because a high-level directional check will not catch them.</p>
+        <p>Schedule VII (EBS) is the clearest example. The BEL in Schedule VII feeds Form 4EBS as a liability, reducing available capital. The same figure feeds the LT Insurance Risk calculation as the base for multiple charges. An understated BEL reduces the liability — raising the numerator — and reduces the risk charges — lowering the denominator. The solvency ratio moves upward. The error produces a more favourable result and survives a surface-level review precisely because everything looks internally consistent.</p>
+        <p>Schedule XVIII can have the same dual-effect property for reinsurance-heavy books: an error in reinsurance balances or qualifying exposure can affect the EBS asset/liability position and the reinsurance counterparty component of Ccred at the same time. The direction depends on which balance is misstated.</p>
+        <p>The Risk Margin has the opposite characteristic: it is one-sided when viewed as a balance sheet item. It sits only in Form 4EBS as a liability at line 27A and does not directly feed any BSCR risk charge. A Risk Margin balance error therefore moves the solvency ratio from one direction only. This is why a change to a hedgeable market risk charge - like the cash holdings rating in the opening example - has no effect on the Risk Margin, while a change to an underlying non-hedgeable risk driver such as credit (excluding credit risk on listed fixed income securities), mortality, lapse, expense, or operational risk may require recalculating both the BSCR and the Risk Margin and refreshing Form 4EBS, depending on the reporting cycle and materiality approach.</p>
+        <p>When a result improves unexpectedly, the first question should be: which schedule changed, and how many outputs does it touch?</p>
+        <h3>Risk impact summary</h3>
+        <div class="article-table-wrap"><table class="article-table">
+          <thead><tr><th>Risk type</th><th>Affects BSCR?</th><th>Affects Risk Margin?</th><th>Affects EBS surplus?</th></tr></thead>
+          <tbody>
+            <tr><td>Hedgeable market risk (Cfi, Ceq, CCur, CCon)</td><td>Yes</td><td>Normally no</td><td>No (unless asset valuation changes)</td></tr>
+            <tr><td>Non-hedgeable risk (Ccred*, insurance risks, operational risk)</td><td>Yes</td><td>Yes (may require refresh)</td><td>Yes (via BEL or RM)</td></tr>
+          </tbody></table></div>
+        <p>*Ccred from reinsurance counterparty default affects RM; credit risk on listed fixed income securities that can be hedged does not.</p>
+        <h2>What comes next</h2>
+        <p>The architecture map in this article is a diagnostic tool. It tells you where information comes from, where it goes, and what happens when a connection breaks. But knowing the architecture and operating it cleanly are different things.</p>
+        <p>In Part II, planned for August, we work through the ten most common points of failure in the Class E filing cycle — the places where the architecture breaks down in practice, and what the consequences look like. The traps range from data synchronisation failures (Schedule XXI&#x27;s top-ten list not auto-linked to portfolio changes) to structural misunderstandings (derivatives invisible to concentration and currency schedules) to calculation framework errors (correlation matrix switched between transitional and new basis).</p>
+        <p>Each trap is described in terms of how the architecture break occurs, why it is hard to detect, and what a targeted audit looks like. The combination of Part I and Part II is intended to give a practitioner both the map and the places on that map where the road most often washes out.</p>
+        <p class="article-note">Part II — The Ten Traps — is planned for August 2026. It will cover the full list of architecture failures drawn from the YE25 filing cycle, combining operational experience with a line-by-line reading of the actual BSCR model.</p>
+        <h2>About the author</h2>
+        <p>Chen Liu is a Fellow of the Institute and Faculty of Actuaries with over twenty years of experience in life insurance, reinsurance, and regulatory reporting across the UK, Hong Kong, and Bermuda. This article draws on direct experience completing the BMA Class E annual return for YE25.</p>
+      </article>
+    </main>
+
+    <footer>
+      <p>Articles are based on practical experience. Confidential details are omitted or generalised.</p>
+    </footer>
+  </body>
+</html>
