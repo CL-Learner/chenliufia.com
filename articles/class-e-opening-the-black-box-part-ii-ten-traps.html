@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ten practical failure modes in the BMA Class E filing cycle, with targeted audit checks for each."
+    />
+    <title>Class E: The Ten Traps | Chen Liu, FIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <nav class="top-nav" aria-label="Site navigation">
+      <a class="brand" href="../index.html">Chen Liu, FIA</a>
+      <div>
+        <a href="../resume.html">Profile</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../market-monitor.html">Market Monitor</a>
+      </div>
+    </nav>
+
+    <header class="article-hero">
+      <p class="eyebrow">BMA / Class E / Reporting Controls</p>
+      <h1>Class E: The Ten Traps</h1>
+      <p class="lede">Part II of Opening the Black Box. Where the YE25 Class E architecture can break, why the break is hard to see, and what to test.</p>
+      <p class="article-meta">Chen Liu, FIA · August 2026</p>
+    </header>
+
+    <main class="article-main">
+      <article class="article-body">
+        <p class="article-note"><strong>Scope and evidence boundary:</strong> This is control-focused failure-mode analysis. It does not claim that all ten traps occurred in one filing. The review was prompted by a close miss involving loss-absorbency treatment; the broader list combines practical reporting experience with a structured review of the YE25 form.<br /><br /><em>Part I of this series mapped the architecture of the YE25 Class E form — which schedules feed which calculations, and how a single data point can move the solvency ratio from two directions simultaneously. Part II uses that map to examine ten practical failure modes worth testing. Each trap is described in terms of how the break occurs, why it is hard to detect, and what a targeted audit looks like.</em></p>
+
+<p>The ten traps are drawn from a combination of operational experience across the YE25 filing cycle and a direct reading of the BSCR model's 133 worksheets. They are organised roughly from asset-side data failures to liability and reinsurance failures to structural misunderstandings — the categories that tend to appear in that order as a filing cycle progresses.</p>
+<p>The traps are not ranked by frequency. They are ranked by the order in which they tend to be discovered — which is usually the reverse of the order in which they should have been caught.</p>
+
+<h2><span class="trap-number">Trap 1</span> <strong>Concentration top ten not linked to portfolio changes</strong></h2>
+<p>Schedule XXI/XXIA's top-ten concentration list may require a manual refresh when it is not dynamically linked to the current asset data. When the asset portfolio changes - a bond matures, a new position is bought, an existing holding grows, or a cash counterparty becomes material - the concentration list does not update automatically. Schedule VI is the live asset register. Schedule XXI/XXIA needs to draw from it dynamically, but in practice it is extracted once and then edited by hand.</p>
+<p>The architecture break is invisible because both schedules can reconcile independently to the trial balance. A new large position can exist for an entire reporting period without triggering any concentration surcharge, simply because no one re-extracted the top ten.</p>
+<p>The additional complexity: related entities under the same corporate parent must be aggregated. Two separate five percent positions from different legal entities under the same issuer should combine into a single ten percent exposure. Position-level reporting does not guarantee that this aggregation has been done.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />Run a top-N counterparty extract from Schedule VI, cash counterparty data, and the current asset register for the reporting period. Compare the result against Schedule XXI/XXIA line by line. Any entrant in the top-ten exposure set that is absent from Schedule XXI/XXIA is a gap. Verify that related-entity aggregation has been applied before determining whether the applicable concentration thresholds are crossed.</aside>
+<h2><span class="trap-number">Trap 2</span> <strong>BSCR rating inconsistency between Schedule II and Schedule VI</strong></h2>
+<p>Schedule II (EBS) shows fixed income holdings aggregated by BSCR rating bucket. Schedule VI provides the same bonds line by line, each with an individual BSCR rating. When a bond is upgraded or downgraded, both schedules must reflect the change consistently.</p>
+<p>They can diverge. The rating on Schedule II might reflect the position as at the last formal review, while the line-by-line Schedule VI carries a more recent rating. Because the two schedules serve different functional purposes — one drives capital factors, one provides the audit trail — they can diverge silently.</p>
+<p>The primary impact is on Cfi, because the BSCR rating determines the fixed income capital factor. There may also be a CCon impact if the same issuer or counterparty appears in the Schedule XXI/XXIA top-ten concentration list. It should not be treated as a Ccred issue unless the exposure separately appears in the credit risk calculation, such as a receivable, reinsurance balance, or OTC derivative default exposure.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />Extract fixed income and cash/cash equivalent exposures with BSCR ratings from the current asset schedules and aggregate by rating bucket. Reconcile those buckets to the calculation inputs for Cfi. Separately compare the largest issuers/counterparties to Schedule XXI/XXIA to determine whether a concentration impact also exists.</aside>
+<h2><span class="trap-number">Trap 3</span> <strong>Equity grandfathering allocation misapplied</strong></h2>
+<p>Under the YE25 instructions, equity grandfathering is not primarily a position-by-position acquisition-date test. Section D18A determines the eligible amount using historic equity percentages for the financial years ending 2016 to 2018 and the current legacy reserves for business carried on at 31 December 2018. The amount is capped and allocated across prescribed equity classes.</p>
+<p>The break can occur when the legacy-reserve base is not refreshed, the historic class allocation is applied incorrectly, or the grandfathered amount exceeds the permitted cap. The instructions also allow eligible equities to be traded or replaced within the same class, so an acquisition register alone is not the governing control.</p>
+<p>The resulting error changes how much exposure is allocated to the old-basis and new-basis equity calculations during transition. The total equity exposure may still reconcile while the capital treatment is wrong.</p>
+<aside class="article-note"><strong>Audit check</strong><br />Recalculate the eligible grandfathered amount from the prescribed historic equity percentage and current legacy reserves, subject to the initial cap. Reperform the allocation by equity class and reconcile the helper schedule to the grandfathered and non-grandfathered calculation tabs. Confirm that the same exposure has not entered both paths.</aside>
+
+<h2><span class="trap-number">Trap 4</span> <strong>Currency natural hedges not reflected in Schedule XX</strong></h2>
+<p>To the extent that a USD-denominated bond matches a USD-denominated liability, the pair provides a natural FX hedge and reduces the net currency exposure. But Schedule XX/XXA relies on assets, liabilities and eligible hedges being mapped consistently by currency. A natural hedge can be lost in the reporting flow when the asset and the matching liability are classified on different currency bases, or when one side is omitted from the supporting data.</p>
+<p>The currency risk charge (CCur) applies the prescribed shock to the net unmatched position; the factor depends on the currency relationship to the reporting currency. For a company with well-matched foreign-currency assets and liabilities, inconsistent mapping can overstate the charge. The correction is to evidence the matching and report both sides consistently.</p>
+<p>FX derivatives — forwards, cross-currency swaps — also belong in the net position calculation. Their exclusion is a separate but related failure. The two errors often appear together.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />For the three largest net currency exposures in Schedule XX, obtain the supporting breakdown: the specific assets in that currency and the specific liabilities. If the assets and liabilities are matched by nature, confirm the net position reflects this. Include all FX derivative positions, converted to delta-equivalent exposure where applicable.</aside>
+<h2><span class="trap-number">Trap 5</span> <strong>Schedule VIIA lapse base not refreshed for portfolio changes</strong></h2>
+<p>The lapse risk charge in Schedule VIIA (EBS) applies three shocks — lapse-up, lapse-down, and mass lapse — to an in-force base drawn from Schedule VII (EBS). The lapse risk charge is material for companies with large accumulation or investment-linked blocks. It is particularly sensitive to portfolio growth.</p>
+<p>The break occurs when the in-force base in VIIA is carried forward from a prior period and manually adjusted rather than re-extracted from Schedule VII. The gap grows over time as the portfolio evolves through new business, lapses, and policy movements. If premium volume has grown by fifteen percent but the VIIA base has not been refreshed, the lapse risk charge is calculated on the old, smaller population.</p>
+<p>The mass lapse component requires additional care. It has a regulatory floor. Retail and non-retail products are treated differently. For companies with blocks across both categories, the segmentation must be applied correctly before the worst-case shock is determined.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />Reconcile the Schedule VIIA stress population to the current-period in-force base used for the BEL, by product and lapse-risk direction. Compare the reconciliation and coverage ratios with the prior period. Investigate unexplained gaps rather than applying a universal percentage threshold.</aside>
+
+<h2><span class="trap-number">Trap 6</span> <strong>Reinsurance ceded not reflected in insurance risk charges</strong></h2>
+<p>Insurance risk charges — mortality, critical illness, longevity — are calculated in the LT Insurance Risk worksheet using the net amount at risk and reserve data from Schedule VII (EBS). The question is whether that data reflects gross exposure or net-of-reinsurance exposure.</p>
+<p>For a company that cedes a substantial proportion of mortality risk, the difference can be significant. If the LT Insurance Risk calculation is run on a gross exposure base when the YE25 filing should reflect net exposure, the mortality capital requirement could be materially overstated. The size of the impact depends on treaty structure, retention, limits, exclusions, and whether the arrangement is quota share, YRT, or another form of reinsurance. For heavily reinsured term life writers - common in the Bermuda and Hong Kong markets - this can be one of the largest single errors in the BSCR.</p>
+<p>The corresponding reinsurance credit should appear somewhere in the calculation cascade. If it does not, the charge is running on gross. The check is straightforward but requires knowing where to look: Schedule VII column definitions determine whether the reported figures are gross or net, and the instructions are specific.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />Identify the three most material reinsurance arrangements using the treaty inventory and the counterparties reported in Schedule XVIII (EBS). Verify whether the LT Insurance Risk calculation uses gross or net exposure as its base for each product line. Trace the treatment to the applicable schedule definitions and calculation worksheet. If gross exposure is used where the rules require net exposure, or if the reinsurance effect is omitted from the prescribed calculation path, the charge requires correction.</aside>
+<h2><span class="trap-number">Trap 7</span> <strong>FDB misstated — scope and quantum</strong></h2>
+<p>Future Discretionary Benefits (FDB) caps the management actions credit in the capital adjustment. Under the YE25 BSCR framework, the management actions credit — which reduces the capital requirement — cannot exceed the amount of FDB. This creates a regulatory cap that limits the credit that can be taken from discretionary benefit reductions. The regulatory definition is the net present value of future bonuses or other discretionary benefits corresponding to the best estimate calculation. Two distinct errors occur.</p>
+<p>The scope error is including benefits that are not genuinely discretionary. Contractual guarantees or benefits the company cannot legally reduce in a stress scenario do not qualify, regardless of how they are labelled internally. Not all items called bonuses or discretionary benefits meet the regulatory test. The scope check requires reading the underlying policy terms, not the internal classification.</p>
+<p>The quantum error is using a stale FDB value — one calculated for a different purpose (pricing, IFRS 17, business planning) and not re-projected at the current reporting date with current best-estimate assumptions. FDB is an actuarial projection, not a balance sheet item that updates automatically.</p>
+<p>Both errors flow directly into the management actions credit, the capital adjustment, and from there into the ECR and the solvency ratio. Because the FDB sits at the intersection of actuarial projection and regulatory logic, it tends to be owned by neither function clearly.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />For each component of the FDB, confirm from policy terms that the benefit is genuinely discretionary — that the company can legally reduce or eliminate it under stress. Then verify that the quantum is calculated using current-period best-estimate assumptions. Test the full cascade: FDB → management actions cap → capital adjustment → ECR → solvency ratio.</aside>
+<h2><span class="trap-number">Trap 8</span> <strong>Correlation matrix switched between Transitional and New basis</strong></h2>
+<p>The BSCR model maintains parallel calculations for the transitional basis (2019 year-end methodology) and the new basis (2024 year-end methodology) during the transitional period. The 2018 basis, where still applicable, follows separate transitional provisions. Each basis uses a different correlation matrix. The matrices are both triangular arrays of numbers between zero and one. They look similar. Switching the reference — pointing the New basis calculation at the Transitional matrix, or vice versa — produces a BSCR that is wrong in a way that is visually indistinguishable from a correct one.</p>
+<p>The error propagates across the covariance aggregation, because the matrix is applied to pairs of risk charges rather than to a single standalone component. A small difference in any single correlation parameter, replicated across all pairs, produces a material aggregate error in the diversification credit.</p>
+<p>This trap is most likely to appear when the correlation matrix reference is hardcoded or copy-pasted from a prior year's model rather than linked dynamically to the correct matrix tab. The YE25 model contains both the 2019 YE and 2024 YE correlation matrices as named worksheets. The reference cell must point to the right one for each basis.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />For each basis (Transitional and New), identify the correlation matrix reference cell in the BSCR calculation. Check which worksheet tab it points to. Compare the matrix values against the prescribed parameters for that vintage in the Prudential Rules. Confirm the matrix is labelled with its effective year and that the reference has not been hardcoded.</aside>
+<h2><span class="trap-number">Trap 9</span> <strong>Derivatives invisible to concentration, currency, and credit schedules</strong></h2>
+<p>Derivatives - interest rate swaps, cross-currency swaps, FX forwards, bond futures, options - are used widely among life companies for ALM and risk management. They carry economic exposure and, for OTC positions, counterparty default exposure that belong in the BSCR calculation. Without an explicit mapping control, they can be absent from it.</p>
+<p>The asset schedules - Schedule VI, Schedule XX/XXA, Schedule XXI/XXIA and Schedule XXIII - were designed for standard asset and ALM data flows. Derivatives often take a different accounting and reporting path, held in a separate trading relationship or off-balance-sheet account that does not flow through the main asset pipeline. Unless there is an explicit process to route derivative positions into the relevant schedules and credit-risk component, they are invisible to the BSCR.</p>
+<p>The consequences appear across multiple charges simultaneously. The derivative counterparty might be the second-largest single exposure but absent from the top-ten list in Schedule XXI/XXIA, understating CCon. A large FX forward position not reflected in Schedule XX/XXA understates or overstates CCur. A swap with a large bank can carry OTC derivative default exposure that escapes Ccred if positive market value and collateral are not captured in the OTC derivative default-risk component.</p>
+<p>The correction does not require complex calculations. It requires an explicit step in the data preparation process that maps each derivative position to the correct regulatory schedule. Options and structured products should use the appropriate regulatory economic-exposure measure rather than raw notional.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />Extract all derivative positions from the GL and trading system. For each position, map the exposure by function: OTC derivative default risk -&gt; CCROTC / OTC derivative credit calculation; currency exposure -&gt; Schedule XX / XXA; interest-rate sensitivity -&gt; Schedule XXIII; concentration exposure -&gt; Schedule XXI / XXIA if it enters the top-ten single-name/counterparty exposure set. Verify that options and structured products use the exposure measure prescribed for the relevant schedule rather than raw notional.</aside>
+<h2><span class="trap-number">Trap 10</span> <strong>Risk Margin interaction with non-financial risk changes</strong></h2>
+<p>The Risk Margin sits in Form 4EBS at line 27A as an EBS liability. It is calculated using the 2024 YE BSCR rules as the present value of the cost of capital required to run off non-hedgeable risks over the remaining policy term. It does not feed any BSCR risk charge directly. A change to the Risk Margin balance itself moves the solvency ratio from one side only - through the EBS surplus - and does not affect the ECR. A change to the underlying non-hedgeable risk driver may affect both the relevant BSCR charge and the Risk Margin, depending on the reporting cycle and materiality approach. For simplicity, this article groups operational risk with non-hedgeable risk drivers when discussing Risk Margin sensitivity, although the underlying mechanics differ from insurance liability run-off risks.</p>
+<p>The Risk Margin is sensitive to changes in non-hedgeable risks: mortality, longevity, lapse, expense, credit (excluding credit risk on listed fixed income securities that can be hedged in active markets), and operational risk. When material assumptions underlying these risks change, the Risk Margin may need to be refreshed using the prescribed scenarios, and Form 4EBS may need to be updated. In practice, monthly or quarterly processes may use approximations or limited updates, such as discount curve refreshes, while the full Risk Margin calculation is rerun at formal reporting points or when changes are material. A change to mortality assumptions, for example, can change the LT Insurance Risk charge (affecting the ECR), the best estimate liability in Schedule VII (affecting the EBS surplus), and the Risk Margin (also affecting the EBS surplus).</p>
+<p>The contrast with market or concentration risk changes is important. A rating error on a cash holding first affects the fixed income investment risk charge through Schedule XIX/XIXA. If the same cash counterparty also appears in the Schedule XXI/XXIA top-ten concentration list, there may be a separate CCon impact. Under the YE25 framework, that cash-rating correction would not normally generate a separate Ccred charge or change a non-hedgeable risk assumption, so the Risk Margin is usually unaffected and EBS surplus does not move unless there is a separate balance sheet valuation issue.</p>
+<p>Knowing which category a change falls into — non-hedgeable risk versus market risk — is the first diagnostic step when someone reports an error. It determines immediately how much of the form needs to be refreshed.</p>
+
+<aside class="article-note"><strong>Audit check</strong><br />When any assumption or data change is reported, classify it first as a diagnostic rule: is it a hedgeable financial risk (Cfi, Ceq, CLTint, CCur, CCon) or a non-hedgeable risk driver (Ccred, insurance risks, or Cop)? Hedgeable financial risk changes normally require refreshing the relevant BSCR calculation only. Non-hedgeable risk-driver changes may require refreshing BSCR, Risk Margin, and the relevant EBS balance sheet line depending on the exposure path, reporting cycle, and materiality approach.</aside>
+
+<h2>Closing note</h2>
+<p>The ten traps in this article are not exotic failure modes. Most of them are structural — they arise from the gap between how the form is designed and how it is actually operated in a multi-team, time-pressured reporting environment. A concentration list may require manual upkeep when the asset system and the BSCR model are separate. Derivatives can become invisible when they travel a different data path. A correlation matrix can be switched when a reference was hardcoded in a prior year. These are not errors that better actuarial judgment would have prevented. They are errors that a clear architecture map, and a targeted pre-submission review, would catch.</p>
+<p>The DV Dashboard changes the stakes. The ratios it monitors — duration gap, diversification ratio, low-grade bond proportion — are benchmarked against the full Bermuda Class E population. Filing a technically complete form that scores as an outlier on the dashboard is not the same as filing well. The regulator sees your numbers in market context, and the dashboard is their first filter.</p>
+<p>The combination of Part I and Part II is intended to give a practitioner both the map and the points on that map where controls can fail. The form rewards people who understand what it is actually measuring — not just those who know how to fill it in.</p>
+
+        <p class="article-note">
+          <strong>Series:</strong>
+          Read <a href="class-e-opening-the-black-box-part-i.html">Part I — Architecture Mapping</a>.
+        </p>
+
+        <h2>About the author</h2>
+        <p>Chen Liu is a Fellow of the Institute and Faculty of Actuaries with more than 18 years of life insurance, actuarial reporting, valuation, risk and capital experience. His international career has included New Zealand, the United Kingdom and Hong Kong, with recent hands-on responsibility for BMA regulatory reporting from Hong Kong.</p>
+        <p class="article-note"><strong>Version note:</strong> Based on the BMA YE25 Class E framework and the 2025 year-end long-term instructions. Regulatory requirements change; readers should consult the latest BMA rules and guidance for their own filing.</p>
+      </article>
+    </main>
+
+    <footer>
+      <p>Articles are based on practical experience. Confidential details are omitted or generalised.</p>
+    </footer>
+  </body>
+</html>

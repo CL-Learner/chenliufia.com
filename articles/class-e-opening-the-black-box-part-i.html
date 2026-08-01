@@ -32,7 +32,7 @@
           </tbody></table></div>
         <p>The answer is contained entirely in the architecture. Under the YE25 BSCR framework, cash and cash equivalents reported in Schedule XIX/XIXA primarily drive Fixed Income Investment Risk (Cfi) through BSCR ratings. They may also affect concentration risk if one or more cash counterparties appear in the top-ten concentration schedules, Schedule XXI/XXIA. They do not normally generate a separate counterparty default charge within the Credit Risk module. The correction therefore changes the capital requirement, but it would not normally refresh the Risk Margin or EBS surplus. The solvency ratio changes from one direction only.</p>
         <p>That diagnostic took about ten seconds. It would have taken considerably longer without a mental map of where each piece of data goes and what it is connected to.</p>
-        <p>This article builds that map explicitly, based on the actual YE25 Class E BSCR form. It is organised in three layers — inputs, calculations, and outputs — and ends with a preview of the most common points of failure, which are covered in Part II.</p>
+        <p>This article builds that map explicitly, based on the actual YE25 Class E BSCR form. It is organised in three layers — inputs, calculations, and outputs — and ends with a preview of practical failure modes, which are now covered in Part II.</p>
         <h2>Why the form resists intuition</h2>
         <p>The Class E form is not a single calculation. It is closer to a set of interlocking models that happen to share a reporting template. Assets are valued on an Economic Balance Sheet basis, not GAAP. Liabilities are discounted using BMA-prescribed risk-free curves. The capital requirement is built from risk charges across multiple categories, adjusted for diversification, with further adjustments for management actions and non-insurance regulated entities. Each step draws from a different schedule, and several schedules feed more than one output simultaneously.</p>
         <p>Schedule numbers do not correspond to the order in which things should be computed. The dependencies between schedules are not shown anywhere in the template itself. A practitioner working through the form — even one who has done it before — often discovers a linkage only after seeing the consequences of an error.</p>
@@ -101,7 +101,7 @@
           <thead><tr><th>Risk charge (code)</th><th>Calculation sheet</th><th>Primary input</th><th>Key design point</th></tr></thead>
           <tbody>
             <tr><td>Fixed income risk (Cfi)</td><td>Fixed Income Investments</td><td>Sch II / IIA / IIB-IIF as applicable for fixed income exposures; Sch XIX/XIXA for cash and cash equivalents by BSCR rating</td><td>Capital factors range from 0% (BSCR 0) to 35% (BSCR 8). Rating is the single most leveraged input on the asset side</td></tr>
-            <tr><td>Equity risk (Ceq)</td><td>Equity Investments</td><td>Sch II (EBS): equities, grandfathered and non-grandfathered split</td><td>Grandfathered equities carry reduced factors. Misclassification is binary and documentation-dependent</td></tr>
+            <tr><td>Equity risk (Ceq)</td><td>Equity Investments</td><td>Sch II (EBS): equities, grandfathered and non-grandfathered split</td><td>Grandfathering is an amount-and-class allocation derived from the D18A historic-equity and legacy-reserve parameters; the helper schedules must reconcile to the old- and new-basis calculation paths</td></tr>
             <tr><td>Interest rate / liquidity risk (CLTint)</td><td>Interest Rate-Liquidity Risk</td><td>Sch V: Duration-Based Approach
 Sch XXIII: Shock-Based Approach</td><td>Duration-Based approach. ALM credit reduces the charge when asset and liability durations are well matched</td></tr>
             <tr><td>Currency risk (CCur)</td><td>Currency Risk</td><td>Sch XX / XXA: net positions by currency after hedges</td><td>25% shock on unhedged net. Natural hedges must be reflected explicitly; the schedule does not assume them</td></tr>
@@ -139,13 +139,11 @@ Sch XXIII: Shock-Based Approach</td><td>Duration-Based approach. ALM credit redu
             <tr><td>Non-hedgeable risk (Ccred*, insurance risks, operational risk)</td><td>Yes</td><td>Yes (may require refresh)</td><td>Yes (via BEL or RM)</td></tr>
           </tbody></table></div>
         <p>*Ccred from reinsurance counterparty default affects RM; credit risk on listed fixed income securities that can be hedged does not.</p>
-        <h2>What comes next</h2>
-        <p>The architecture map in this article is a diagnostic tool. It tells you where information comes from, where it goes, and what happens when a connection breaks. But knowing the architecture and operating it cleanly are different things.</p>
-        <p>In Part II, planned for August, we work through the ten most common points of failure in the Class E filing cycle — the places where the architecture breaks down in practice, and what the consequences look like. The traps range from data synchronisation failures (Schedule XXI&#x27;s top-ten list not auto-linked to portfolio changes) to structural misunderstandings (derivatives invisible to concentration and currency schedules) to calculation framework errors (correlation matrix switched between transitional and new basis).</p>
-        <p>Each trap is described in terms of how the architecture break occurs, why it is hard to detect, and what a targeted audit looks like. The combination of Part I and Part II is intended to give a practitioner both the map and the places on that map where the road most often washes out.</p>
-        <p class="article-note">Part II — The Ten Traps — is planned for August 2026. It will cover the full list of architecture failures drawn from the YE25 filing cycle, combining operational experience with a line-by-line reading of the actual BSCR model.</p>
+        <h2>Continue to Part II</h2>
+        <p>The architecture map tells you where information comes from and where it goes. Part II turns that map into a control framework: ten practical failure modes, why each can survive normal reconciliation, and the targeted audit check that exposes it.</p>
+        <p class="article-note"><a href="class-e-opening-the-black-box-part-ii-ten-traps.html">Read Part II — The Ten Traps</a>.</p>
         <h2>About the author</h2>
-        <p>Chen Liu is a Fellow of the Institute and Faculty of Actuaries with over twenty years of experience in life insurance, reinsurance, and regulatory reporting across the UK, Hong Kong, and Bermuda. This article draws on direct experience completing the BMA Class E annual return for YE25.</p>
+        <p>Chen Liu is a Fellow of the Institute and Faculty of Actuaries with more than 18 years of life insurance, actuarial reporting, valuation, risk and capital experience. His international career has included New Zealand, the United Kingdom and Hong Kong, with recent hands-on responsibility for BMA regulatory reporting from Hong Kong.</p>
       </article>
     </main>
 
