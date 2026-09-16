@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>When IFRS 17 Results Do Not Make Sense | Chen Liu, FIA</title>
+    <meta name="description" content="How expectations guide an IFRS 17 investigation: business, actuarial, accounting and system sense, illustrated through an unexpected CSM release." />
+    <link rel="canonical" href="https://chenliufia.com/articles/when-ifrs17-results-do-not-make-sense.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="When IFRS 17 Results Do Not Make Sense" />
+    <meta property="og:description" content="How expectations guide an IFRS 17 investigation: business, actuarial, accounting and system sense, illustrated through an unexpected CSM release." />
+    <meta property="og:url" content="https://chenliufia.com/articles/when-ifrs17-results-do-not-make-sense.html" />
+    <meta property="og:site_name" content="Chen Liu, FIA" />
+    <meta property="article:published_time" content="2026-09-16" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="article-page">
+    <nav class="top-nav" aria-label="Site navigation">
+      <a class="brand" href="../index.html">Chen Liu, FIA</a>
+      <div>
+        <a href="../resume.html">Profile</a>
+        <a href="../insights.html">Insights</a>
+        <a href="../market-monitor.html">Market Monitor</a>
+      </div>
+    </nav>
+
+    <header class="article-hero">
+      <p class="eyebrow">IFRS 17 / Results Investigation / Part 1</p>
+      <h1>When IFRS 17 Results Do Not Make Sense</h1>
+      <p class="lede">How expectations guide an investigation from the accounts back to the model</p>
+      <p class="article-meta">Chen Liu, FIA · 16 September 2026</p>
+    </header>
+
+    <main class="article-main">
+      <article class="article-body">
+<p>Before opening a results file, we usually have some idea of what we expect to find. We know what happened to the business, which assumptions changed, and which movements should matter. The numbers arrive into a picture we have already started to form.</p>
+
+<p>In my <a href="create-and-manage-expectations.html">earlier article on creating and managing expectations</a>, I reflected on how much this habit contributes to actuarial judgment. But forming an expectation is only the beginning. The more interesting test comes when the result refuses to fit it.</p>
+
+<p>Suppose the CSM release is 300. You expected something around 120.</p>
+
+<p>The model ran successfully. The roll-forward reconciles. There is no error message to follow. Someone can explain exactly how the system arrived at 300, yet you still cannot explain why the business should have produced it.</p>
+
+<p>Where would you look first?</p>
+
+<p>Four questions help me organise that thinking: <strong>does the result make business sense, actuarial sense, accounting sense and system sense?</strong> Business sense asks what happened to the contracts and whether that supports the reported movement. Actuarial sense asks whether the assumptions, projected service and measurement explain its direction and scale. Accounting sense asks whether the movement belongs in the reported balance or result, in the right period. System sense asks whether the data and processing have carried that meaning correctly from the model to the accounts. My implementation experience provides a useful starting point for exploring those connections in reporting reviews.</p>
+
+<h2>Give the result a chance to be right</h2>
+
+<p>It is tempting to begin with the system. An unexpected number appears on a report, so we ask which calculation went wrong.</p>
+
+<p>I would begin a little earlier: <strong>what would have to be true for this result to be right?</strong></p>
+
+<p>Perhaps we have missed a business event. An unusually large addition of new contracts might have changed the amount of CSM available for release. Or contracts might be ending sooner than expected, changing the service still to come. I would look at the new-business contribution and the evidence on maturities and lapses before deciding that the reported result is implausible.</p>
+
+<p>I would also check what we are comparing. Does the report cover the same population and period? Is the figure specifically CSM release, or a broader revenue movement? An investigation can end quite quickly when the apparent anomaly turns out to be a comparison between two different things.</p>
+
+<p>For CSM release, a higher amount might reflect a larger balance available for release, or a larger share of service being recognised in the current period. Those possibilities give us somewhere useful to start.</p>
+
+<p>Consider the following simplified case.<sup><a href="#example-note" aria-label="Example assumptions">1</a></sup> We first confirm that the reported figure is the group&#x27;s CSM release for the period we are reviewing, then examine the balance available for release.</p>
+
+<div class="article-table-wrap" role="region" aria-label="Group CSM movements" tabindex="0"><table class="article-table"><thead><tr><th scope="col">Group CSM movement</th><th scope="col">Amount</th></tr></thead><tbody><tr><th scope="row">Opening CSM</th><td>1,160</td></tr><tr><th scope="row">Interest accretion</th><td>+20</td></tr><tr><th scope="row">Operating-assumption adjustments</th><td>0</td></tr><tr><th scope="row">Operating-experience adjustments to CSM</th><td>−30</td></tr><tr><th scope="row">Other pre-release adjustments: new business</th><td>+50</td></tr><tr><th scope="row"><strong>CSM before release</strong></th><td><strong>1,200</strong></td></tr><tr><th scope="row"><strong>Reported release</strong></th><td><strong>−300</strong></td></tr><tr><th scope="row"><strong>Closing CSM</strong></th><td><strong>900</strong></td></tr></tbody></table></div>
+
+<p>The opening balance agrees with the previous close. Interest, operating experience and new business agree with the independent review. Together, they bring us to the expected pre-release balance of 1,200.</p>
+
+<p>That agreement is useful. It tells us that the higher release has not come from an unexpectedly large amount of CSM waiting to be released. We can now spend less time on the opening balance and those movements, and more time on the proportion being released.</p>
+
+<p>The reported amount implies <strong>300 / 1,200 = 25%</strong>. Our expectation was around 10%, broadly consistent with comparable recent periods.</p>
+
+<p>A quarter of the available CSM has been released. What has changed in the service pattern to explain that?</p>
+
+<h2>Ask what the ratio is telling us</h2>
+
+<p>In this example, the release ratio compares current-period coverage units with the total of current and remaining future coverage units:</p>
+
+<p><strong>Release ratio = current CU / (current CU + future CU).</strong></p>
+
+<p>The two parts tell different stories. More current service could increase the ratio. Less expected future service could also increase it. Looking only at the percentage conceals that distinction.</p>
+
+<p>We check current service first. The calculation uses 100 coverage units, which agrees with the reviewed total. There is no increase here to explain the jump in the ratio.</p>
+
+<p>Attention now turns to future service. With 100 current units, a 25% ratio means the calculation contains only 300 future units. Our reviewed projection contains 900.</p>
+
+<p>The question has become much more specific. We are no longer asking why CSM release looks high. We are asking <strong>why the calculation sees so much less service still to come</strong>.</p>
+
+<p>This brings us back to the possibility of contracts ending sooner. In this case, the maturity schedule and lapse experience show no unexpected run-off, and the projection uses the reviewed assumptions. The business evidence does not explain the reduction in future service. We therefore compare the contributions within the group:</p>
+
+<div class="article-table-wrap" role="region" aria-label="Coverage units by reporting combination" tabindex="0"><table class="article-table"><thead><tr><th scope="col">Reporting combination</th><th scope="col">Reviewed current CU</th><th scope="col">Reviewed future CU</th><th scope="col">Future CU used in the calculation</th></tr></thead><tbody><tr><th scope="row">A</th><td>60</td><td>300</td><td>300</td></tr><tr><th scope="row">B</th><td>40</td><td>600</td><td>0</td></tr><tr><th scope="row"><strong>Total</strong></th><td><strong>100</strong></td><td><strong>900</strong></td><td><strong>300</strong></td></tr></tbody></table></div>
+
+<p>B still contributes current service, but none of its expected future service reaches the calculation. That is a more informative clue than a disappointing reconciliation total. It tells us which contribution to follow, and which part of its journey to examine.</p>
+
+<h2>Find where the story changes</h2>
+
+<p>The data travels through a familiar sequence:</p>
+
+<p><strong>Actuarial model → ETL (extract, transform and load) → subledger → general ledger and reporting.</strong></p>
+
+<p>Knowing the sequence helps us choose between explanations. If the subledger received 900 future units and used only 300, we would examine its loading, grouping and calculation. If it received only 300, the search moves upstream.</p>
+
+<p>So we compare the input actually consumed by this run with the subledger&#x27;s calculation. Both contain 300. The subledger has calculated the ratio from the amount it received.</p>
+
+<p>Next, we inspect the corresponding actuarial source output. It contains both contributions: 300 for A and 600 for B. The run, population and projection point match the reporting inputs we are investigating.</p>
+
+<p>The contribution exists before ETL and is absent at its handoff. We now have a reason to investigate the transformation between those two points.</p>
+
+<p>Following the future-service extract reveals the fault. An incomplete lookup assigns both contributions to A; duplicate handling then drops B&#x27;s 600 units. Current service follows a separate extraction path and survives. The trace explains the particular pattern we observed: current service agrees, while one future-service contribution is missing.</p>
+
+<p>We correct the lookup and repeat the process with the same source data and calculation settings. Both contributions now survive. Future coverage units return to 900, the release ratio returns to 10%, and CSM release becomes 120.</p>
+
+<p>That completes the explanation: we have located the break, understood the mechanism, and shown that correcting it removes the discrepancy. Matching our original expectation is reassuring; being able to explain the change is what makes the conclusion convincing.</p>
+
+<h2>Bring the answer back to the accounts</h2>
+
+<p>Correcting the release from 300 to 120 leaves <strong>1,200 − 120 = 1,080</strong> of closing group CSM. We follow that correction through the accounting entries to the CSM-release component of insurance revenue, and check that the CSM reconciliation and management reporting tell the same story. The explanation must reach the figures people use to assess performance.</p>
+
+<p>The remaining balance also needs to appear in the right reporting rows. Here, future coverage units of 300 and 600 allocate the group&#x27;s closing CSM as 360 and 720. This example uses future coverage units because that is the reporting-allocation rule assumed here. Other implementations may use different allocation drivers.</p>
+
+<p>The business explanation is now straightforward. The higher release did not reflect more service being provided, or a supported reduction in future service. Part of the future-service input had been lost. The calculation consequently recognised too large a share of CSM in the current period.</p>
+
+<p>That is an explanation a reviewer can take back to the financial results. “We fixed a lookup” would tell them much less.</p>
+
+<h2>What I would take into the next investigation</h2>
+
+<p>UAT records can help when deciding where to look. Earlier tests and issue logs may point to vulnerable handoffs, date selections or mappings. I would use them to suggest a check, then use the current run&#x27;s evidence to decide whether that explanation fits. Their value is in shortening the search.</p>
+
+<p>The four questions help keep the whole picture in view. A number may be calculated correctly from the data supplied, yet describe the wrong population. It may reflect the right contracts at the wrong date. Or it may represent a different accounting movement from the one we thought we were reviewing.</p>
+
+<p>That is why I would usually check the business event, population, timing and classification before opening the calculation logic. Those checks help establish what the number is supposed to represent. When a discrepancy remains, we can follow the relevant data and mapping with a much clearer question.</p>
+
+<p>The skill is in choosing the next check: one that separates plausible explanations, rather than simply producing another table. In this case, agreement in the pre-release balance directed attention to the ratio. Agreement in current service directed attention to future service. Agreement between the subledger and its input moved the search upstream. Each finding changed where it was worth looking next.</p>
+
+<p>Had a business event explained the higher release, we would have changed our expectation instead.</p>
+
+<p>That is the habit I want to carry forward from the Expectations article: form a view before the numbers arrive, then stay curious when they disagree. The useful insight is the path from surprise to explanation—and why we chose that path.</p>
+
+<p class="article-note" id="example-note">¹ This illustrative case uses a non-onerous GMM group, one currency and consistent coverage-unit weights without additional time-value weighting. The operating rows show CSM adjustments; the new business joins the same group and is included in the service measures. Figures and the fault are constructed, drawing on data-flow and UAT study material.</p>
+
+<p><em>This is the first of three articles. Part 2 will examine why actuarial movements enter different accounting destinations. Part 3 will address overall results analysis and presentation.</em></p>
+</article>
+    </main>
+
+    <footer>
+      <p>Independent actuarial commentary for professional reference.</p>
+    </footer>
+  </body>
+</html>
