@@ -1,0 +1,140 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Liability Moved. What Happened to Profit? | Chen Liu, FIA</title><meta name="description" content="A real reporting walkthrough, three IFRS 17 examples, and a complete map from actuarial movements to liabilities, cash and profit. Part 2 of Chen Liu’s IFRS 17 series."><link rel="canonical" href="https://chenliufia.com/articles/the-liability-moved-what-happened-to-profit.html"><meta property="og:type" content="article"><meta property="og:title" content="The Liability Moved. What Happened to Profit?"><meta property="og:description" content="A real reporting walkthrough, three IFRS 17 examples, and a complete map from actuarial movements to liabilities, cash and profit. Part 2 of Chen Liu’s IFRS 17 series."><meta property="og:url" content="https://chenliufia.com/articles/the-liability-moved-what-happened-to-profit.html"><meta property="og:site_name" content="Chen Liu, FIA"><meta property="og:image" content="https://chenliufia.com/assets/the-liability-moved-what-happened-to-profit-og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Illustrative IFRS 17 example: claims paid 150; selected profit effect minus 12. Follow the amount before explaining the result."><meta property="article:published_time" content="2026-10-11"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://chenliufia.com/assets/the-liability-moved-what-happened-to-profit-og.png"><link rel="stylesheet" href="../styles.css"><style>
+:root{--ink:#223545;--muted:#586875;--teal:#176b68;--line:#d5dfe3;--cream:#fbfaf6}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--cream);font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.72}.draft-bar{font:13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#203947;color:#fff;padding:13px 24px;text-align:center;letter-spacing:.04em}main{max-width:800px;margin:auto;padding:54px 30px 75px}h1{font-size:clamp(36px,5vw,54px);line-height:1.12;letter-spacing:-.025em;margin:0 0 22px}h2{font:650 29px/1.25 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin:48px 0 20px}h3{font:650 23px/1.3 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}p{margin:0 0 22px}main>p:first-of-type{font-size:22px;line-height:1.45;color:var(--muted)}main>p:nth-of-type(2){font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin-bottom:36px;color:var(--teal)}strong{font-weight:700}a{color:var(--teal);text-underline-offset:3px}hr{border:0;border-top:1px solid var(--line);margin:42px 0 28px}.table-wrap{overflow-x:auto;margin:26px 0 30px}table{border-collapse:collapse;width:100%;font:15px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}th{background:#e5eeeb;text-align:left}th,td{padding:12px 14px;border-bottom:1px solid var(--line)}td:not(:first-child),th:not(:first-child){text-align:right}tbody tr:last-child{background:#f0f3ef}ol{padding-left:24px;font-size:15px;line-height:1.6}li{margin:0 0 15px}main>h3:last-of-type{font-size:20px}footer{font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--muted);border-top:1px solid var(--line);padding-top:20px;margin-top:40px}
+.statement-map{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin:32px -70px;background:#f0f5f3;border:1px solid #c8d9d4;border-radius:12px;overflow:hidden;line-height:1.45}.map-head{padding:24px 28px 18px;background:#e4eeea}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--teal);margin:0 0 9px}.map-head h3{font-size:29px;margin:0 0 8px}.map-head>p:last-child{font-size:14px;color:var(--muted);margin:0}.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:22px 24px}.column-label{font-size:12px;letter-spacing:.08em;margin:0 0 13px;color:var(--teal)}.map-card{background:#fff;border:1px solid #d3dfdb;border-radius:7px;margin:0 0 14px;padding:14px}.map-card h4{font-size:16px;margin:0 0 11px}.map-row{display:grid;grid-template-columns:23px 1fr auto;gap:8px;align-items:start;font-size:13px;margin:8px 0}.map-row>b{font-variant-numeric:tabular-nums;font-size:15px}.chip{display:inline-grid;place-items:center;width:21px;height:21px;border-radius:4px;background:#e5efec;color:var(--teal);font-size:11px;font-weight:750}.card-foot{font-size:12px;border-top:1px solid #e2e9e5;padding-top:9px;margin:10px 0 0;color:var(--muted)}.internal-link{text-align:center;font-size:12px;color:var(--teal);margin:-3px 0 10px;font-weight:600}.result{background:#203f49;color:white;border-radius:7px;padding:18px;margin-bottom:17px;display:grid;grid-template-columns:1fr auto;align-items:center;font-size:15px}.result strong{font-size:34px}.result p{grid-column:1/-1;font-size:13px;margin:6px 0 0;color:#e1ebeb}.settlement{border:1px dashed #99aaa7;padding:14px;border-radius:7px}.settlement h4{font-size:12px;letter-spacing:.06em;margin:0 0 10px}.settlement p{font-size:12px;color:var(--muted);margin:10px 0 0}figcaption{padding:16px 24px;background:#e4eeea;font-size:13px;line-height:1.65}
+@media(max-width:980px){.statement-map{margin:28px 0}}@media(max-width:620px){body{font-size:18px}main{padding:32px 20px 50px}h2{font-size:25px}.map-grid{grid-template-columns:1fr;padding:18px 16px;gap:10px}.map-head{padding:20px 16px}.map-head h3{font-size:26px}figcaption{padding:16px}.table-wrap{margin-left:-5px;margin-right:-5px}th,td{padding:10px 8px;font-size:13px}}@media print{body{background:white;font-size:11pt;line-height:1.5}.draft-bar{background:white;color:#333}main{max-width:none;padding:20px}.statement-map{margin:24px 0;break-inside:avoid}h2{break-after:avoid;font-size:18pt}.table-wrap{overflow:visible}a{color:inherit}}
+
+.top-nav{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.4}.top-nav a{text-decoration:none}.publication-date{font:13px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#586875;margin-top:-22px;margin-bottom:28px}.note-ref{text-decoration:none}li[id]{scroll-margin-top:20px}.series-nav{font:14px/1.7 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border-top:1px solid #d5dfe3;margin-top:32px;padding-top:20px}.statement-map p{margin-top:0}.statement-map .map-row{line-height:1.45}@media(max-width:620px){.top-nav{padding:15px 20px;flex-wrap:wrap}.top-nav div{gap:15px;font-size:12px}}</style></head><body><nav class="top-nav" aria-label="Site navigation"><a class="brand" href="../index.html">Chen Liu, FIA</a><div><a href="../resume.html">Profile</a><a href="../insights.html">Insights</a><a href="../market-monitor.html">Market Monitor</a></div></nav><main><h1>The Liability Moved. What Happened to Profit?</h1>
+<p><em>Following an actuarial movement far enough to explain it</em></p>
+<p><strong>Chen Liu, FIA · IFRS 17 series, Part 2</strong></p><p class="publication-date">11 October 2026</p>
+<p>A large maturity outgo was always going to attract questions in our IFRS 17 production walkthrough. It was prominent in the movement in the best estimate liability, yet there was no comparable amount in the insurance service result.</p>
+<p>I could anticipate the first question. I had not prepared well enough for where it would lead.</p>
+<p>Much of the outgo represented investment components. Explaining that these were excluded from insurance revenue and insurance service expenses led to the next question: where had they gone? My answer about the liability reduction and the CSM adjustment then opened up further questions. Which difference adjusted the CSM? Why? What part was financial, and where did that part appear?</p>
+<p>At points, I became caught in my own answers. Looking back, I would have prepared a fuller picture of the movement before trying to explain individual accounting categories. A reviewer should be able to follow that picture without supplying the missing IFRS 17 knowledge themselves.</p>
+<p>In <a href="when-ifrs17-results-do-not-make-sense.html">the first article</a>, I explored how expectations help us investigate a result that looks wrong. Here, the difficulty is different. The result may be correct, but the explanation can still leave someone with the wrong expectation about profit.</p>
+<p>“The liability increased” sounds informative. Before drawing a conclusion, though, we need to know which liability component increased, what changed alongside it, and whether the movement represents a revised estimate, a service provided or an obligation being settled.</p>
+<h2>Start with somewhere for the money to go</h2>
+<p>The map I find useful puts the balance sheet on the left and the income statement on the right. On the left sit the best estimate liability (BEL), the risk adjustment (RA) and the contractual service margin (CSM). On the right sit insurance revenue, insurance service expenses and insurance finance income or expenses.</p>
+<p>That familiar picture needs two further places: the liability for incurred claims (LIC), which includes obligations arising from events that have already happened, and cash. Other comprehensive income (OCI) also needs a place when the insurer uses it to present part of the insurance finance result.</p>
+<p>Without those destinations, it is easy to look for a profit effect where the movement is actually a settlement, or to confuse a change in future unearned profit with profit earned today.</p>
+<p>Consider three situations. The figures below are constructed examples, in millions; they are separate from the production review I recalled above. We begin with the general measurement model (GMM), then bring in the variable fee approach (VFA) where it changes the answer.</p>
+<h2>A worse claims outlook, but a smaller total liability</h2>
+<p>Suppose lapse rates fall on a mature portfolio. More policies are expected to remain until a claim is paid. After allowing for the accompanying changes in premiums, expenses and surrender payments, the revised projection produces higher future net outflows.</p>
+<p>Our business expectation is straightforward: the remaining contracts have become less profitable. It is tempting to translate that directly into a larger total liability and a current-period loss.</p>
+<p>For this GMM group, the increase in BEL is <strong>50 at current discount rates</strong>. The same change is <strong>60 at the locked-in rates used to adjust CSM</strong>. The group has 100 of CSM available. Holding RA unchanged and looking before the period’s CSM release gives:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th align="right">Before the update</th>
+<th align="right">After the update</th>
+<th align="right">Change</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BEL</td>
+<td align="right">500</td>
+<td align="right">550</td>
+<td align="right">+50</td>
+</tr>
+<tr>
+<td>RA</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td>CSM</td>
+<td align="right">100</td>
+<td align="right">40</td>
+<td align="right">−60</td>
+</tr>
+<tr>
+<td><strong>Total insurance liability</strong></td>
+<td align="right"><strong>620</strong></td>
+<td align="right"><strong>610</strong></td>
+<td align="right"><strong>−10</strong></td>
+</tr>
+</tbody></table></div>
+<p>The deterioration reduces unearned profit by 60. But the liability’s cash-flow estimate increases by only 50 on its current measurement basis. The difference produces insurance finance income of 10; in this example, all insurance finance income and expenses are presented in P&amp;L.<a class="note-ref" href="#note-1" aria-label="Note 1">¹</a></p>
+<p>So the total insurance liability falls, and there is an immediate accounting gain, even though the future claims outlook has worsened.</p>
+<p>This is where I would want the explanation to slow down. The gain of 10 does not mean that lower lapses improved this portfolio’s economics. The reduction from 100 to 40 tells us what happened to the unearned margin. The finance result explains why the two balance-sheet movements did not cancel. The subsequent release of the remaining CSM is a separate step.</p>
+<p>There is also a question behind the answer “the CSM absorbs it”: <strong>how much CSM is available?</strong> In a separate example, remove the discount-rate difference and let the future deterioration be 60 on both bases. With only 40 of CSM available, the CSM falls to zero and the remaining 20 is recognised as a loss in insurance service expenses. A loss component tracks that 20 within the remaining-coverage liability; it is not another liability added on top.</p>
+<p>For a qualifying future non-financial change under VFA, the CSM adjustment uses current measurement. An isolated BEL increase of 50 can therefore be matched by a CSM reduction of 50, with sufficient CSM and RA unchanged. The GMM difference of 10 is not carried across to that comparison.</p>
+<p>Before explaining the movement, I would therefore establish both its measurement basis and the margin available to absorb it. Those facts determine whether the answer can stop at reduced unearned profit or must also explain a current loss.</p>
+<h2>Higher claims paid, but how much higher service expense?</h2>
+<p>Now suppose a mortality spike produces unexpectedly high death benefits on an endowment portfolio. The cash outgo exceeds expectations. We expect questions about the effect on earnings.</p>
+<p>Before comparing the full payment with insurance service expenses, I would split it into the insurance benefit and the investment component. The latter is the amount the contract requires the insurer to repay in all circumstances, whether or not an insured event occurs. Its repayment is excluded from insurance revenue and service expenses. A payment’s label—death benefit or maturity benefit—does not by itself establish that split.<a class="note-ref" href="#note-2" aria-label="Note 2">²</a></p>
+<p>Take this simplified GMM example of benefits incurred and paid during the period:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Benefit component</th>
+<th align="right">Originally expected</th>
+<th align="right">Actual</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Insurance component</td>
+<td align="right">30</td>
+<td align="right">40</td>
+</tr>
+<tr>
+<td>Investment component</td>
+<td align="right">100</td>
+<td align="right">110</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td align="right"><strong>130</strong></td>
+<td align="right"><strong>150</strong></td>
+</tr>
+</tbody></table></div>
+<p>The expected insurance amount of 30 contributes to insurance revenue. Actual insurance claims of 40 enter insurance service expenses. These selected items therefore contribute a service loss of <strong>10</strong>. CSM release, release of RA and other revenue components would appear separately.</p>
+<p>The investment repayment of 110 enters neither of those service lines. But that does not finish the explanation of its difference from expectation.</p>
+<p>Suppose the expected investment repayment increased from 100 to 102 because of the financial effects recognised before it became payable. The comparison relevant to the CSM adjustment is then <strong>110 against 102</strong>, leaving 8. The original gap of 10 consists of a financial effect of 2 and a residual difference of 8. With sufficient CSM, the 8 reduces CSM; the 2 is insurance finance expense in this example.<a class="note-ref" href="#note-3" aria-label="Note 3">³</a></p>
+<p>This is a specific IFRS 17 treatment of the difference between the expected and actual investment component becoming payable. It adjusts the margin for future service. It does not turn the current death claim into future service, and it does not rely on the payment happening later.</p>
+<p>That distinction was precisely the kind of follow-up my original explanation needed to withstand. Saying “the IC variance goes to CSM” leaves too much hidden if the variance being discussed still includes finance.</p>
+<figure class="statement-map" aria-labelledby="map-title">
+<div class="map-head"><p class="eyebrow">FOLLOW THE CLAIM · AMOUNTS IN MILLIONS</p><h3 id="map-title">Where the 150 goes</h3><p>Match A–F across the balances and destinations. Changes shown before CSM service release.</p></div>
+<div class="map-grid"><div><h4 class="column-label">BALANCE SHEET</h4>
+<section class="map-card"><h4>BEL · remaining coverage</h4><div class="map-row"><span class="chip">A</span><span>Expected insurance service</span><b>−30</b></div><div class="map-row"><span class="chip">C</span><span>Financial update to IC</span><b>+2</b></div><div class="map-row"><span class="chip">D</span><span>Residual IC difference</span><b>+8</b></div><div class="map-row"><span class="chip">E</span><span>Payable IC transfers to LIC</span><b>−110</b></div><p class="card-foot">Selected BEL movement: <b>−130</b></p></section>
+<div class="internal-link">D connects BEL and CSM: +8 / −8</div>
+<section class="map-card"><h4>CSM · unearned profit</h4><div class="map-row"><span class="chip">D</span><span>IC adjustment</span><b>−8</b></div><p class="card-foot">An adjustment to margin; not a service release.</p></section>
+<section class="map-card"><h4>LIC · incurred obligations</h4><div class="map-row"><span class="chip">E</span><span>IC transfers in</span><b>+110</b></div><div class="map-row"><span class="chip">B</span><span>Insurance claims incurred</span><b>+40</b></div><div class="map-row"><span class="chip">F</span><span>Benefits paid</span><b>−150</b></div><p class="card-foot">Selected net LIC movement: <b>0</b></p></section>
+</div><div><h4 class="column-label">PROFIT AND LOSS</h4>
+<section class="map-card"><h4>Insurance revenue</h4><div class="map-row"><span class="chip">A</span><span>Expected insurance claims</span><b>+30</b></div></section>
+<section class="map-card"><h4>Insurance service expenses</h4><div class="map-row"><span class="chip">B</span><span>Actual insurance claims</span><b>40</b></div><p class="card-foot">Selected service result: <b>30 − 40 = −10</b></p></section>
+<section class="map-card"><h4>Insurance finance expense</h4><div class="map-row"><span class="chip">C</span><span>Financial update to IC</span><b>2</b></div></section>
+<div class="result"><span>Selected profit effect</span><strong>−12</strong><p>30 revenue − 40 service expense<br>− 2 finance expense</p></div>
+</div></div>
+<div class="settlement" style="margin:0 24px 22px"><h4>BALANCE SHEET · CASH SETTLEMENT</h4><div class="map-row"><span class="chip">F</span><span>Cash paid</span><b>−150</b></div><p>E is a liability transfer. F settles the obligation. Neither creates another service expense.</p></div>
+<figcaption><b>Balance check:</b> cash −150; insurance liabilities −138 (BEL −130, CSM −8, LIC 0).<br>Equity change = −150 −(−138) = <b>−12</b>, matching the selected P&amp;L. RA is unchanged.</figcaption></figure>
+
+<p><em>The map follows only these selected movements, before CSM service release. RA is held unchanged. Matching letters connect the balance-sheet movements to their destinations.</em></p>
+<p>LIC completes the settlement story. In this example, the payable investment component of 110 transfers from the remaining-coverage liability into LIC. The insurance claim of 40 also creates an incurred-claims obligation, with an expense of 40. Paying the full 150 then reduces LIC and cash by 150. That payment does not create another insurance service expense.</p>
+<p>If the benefits remained unpaid at the reporting date, LIC would contain the 150 instead. The selected service and finance effects would already have been recognised. Cash payment and expense recognition answer different questions.</p>
+<p>We can now account for the additional 20 of benefits: <strong>10 is an adverse insurance experience result, 2 is finance expense, and 8 reduces unearned margin.</strong> The selected current profit effect is a loss of 12, while cash outgo is 150. Nothing has disappeared; the amounts describe different things.</p>
+<p>A mortality spike can also change the projection for surviving policies or lead to revised future assumptions. Those effects need their own explanation alongside the incurred claims. Treating everything caused by the same business event as one accounting movement would undo the distinction we have just made. The current insurance experience also remains a service-result item under VFA; changing the model does not send every adverse movement into CSM.</p>
+<h2>Falling rates: the measurement model matters</h2>
+<p>Consider a block of fixed long-term annuities. The relevant liability discount curve falls by 50 basis points. The promised payments have not changed, but their present value increases.</p>
+<p>For a GMM block, the immediate expectation is a finance effect. The discount-curve remeasurement does not directly adjust CSM. If the insurer presents all insurance finance income and expenses in P&amp;L, the increase produces a finance expense. If it disaggregates those amounts between P&amp;L and OCI, the explanation must identify the two destinations. Saying “it goes to finance” still leaves the question of this period’s profit unanswered.</p>
+<p>For VFA, consider instead a participating contract that qualifies for that model. Its economics include an investment-related service for which the insurer earns a variable fee. Market movements can change that future fee, so they can affect unearned profit in CSM.</p>
+<p>A useful distinction is between the obligation corresponding to the fair value of the underlying items and the insurer’s share of those items. Changes in the former do not adjust CSM; changes in the latter generally do. Financial effects on guarantees can also adjust CSM because they change the cost of providing the future service.<a class="note-ref" href="#note-4" aria-label="Note 4">⁴</a></p>
+<p>For example, isolate a 20 increase in a qualifying VFA guarantee liability caused by the market change. With sufficient CSM and no risk-mitigation exception applied, a CSM reduction of 20 offsets it. That particular change reduces unearned profit without an immediate net increase in the insurance liability. Other underlying-item and asset movements still need to be identified separately.</p>
+<p>Calling the rate movement “market noise” would skip the question that matters here: what promise or future fee has become more expensive, and which accounting route applies to it? The same market event can affect current finance results, OCI and future margin in different ways. The assets backing the obligations have their own movements too; we cannot infer the insurer’s total profit or equity effect from the liability alone.</p>
+<h2>Return to the question in the room</h2>
+<p>Looking back at that production walkthrough, I would keep the balance-sheet-to-P&amp;L map, but give LIC and cash a visible place. I would separate the repayment from the variance, the financial effect from the CSM adjustment, and the adjustment from the later release of profit.</p>
+<p>I would also test the implications of my first answer. If I said a payment was excluded from the service result, could I show where it went? If I said a change reduced CSM, had I checked that sufficient CSM remained? If I said a movement was financial, could I explain whether it affected P&amp;L or OCI?</p>
+<p>These questions do not require the audience to know the standard. They arise naturally from trying to understand the accounts.</p>
+<p>That is the extension of managing expectations I take from this experience. Before the numbers arrive, form a view of what the business should produce. Before explaining a movement, consider what someone might reasonably conclude from the first sentence—and follow the amounts far enough to support or correct that conclusion.</p>
+<p>The next article will bring the movements together to examine overall financial performance. Here, the task is to finish the explanation of each movement before asking the reader to build a bigger story from it.</p>
+<hr>
+<h3>Notes on the examples</h3>
+<p>The examples isolate selected movements in issued life contracts, with no reinsurance, tax or currency effects. IC means a non-distinct investment component remaining within IFRS 17. RA and unrelated movements are held fixed. CSM capacity is sufficient except in the explicit loss example; adjustments are shown before service release. Period claims figures are payable amounts, not opening discounted values.</p>
+<ol>
+<li id="note-1"><strong>Measurement and losses:</strong> GMM future-service adjustments use the relevant locked-in basis; the liability uses current measurement. The 50/60 case assumes all finance in P&amp;L. The separate 60/40 loss case assumes identical current and locked-in rates. Relevant requirements: paragraphs 44(c), 48–49, B72(c), B96–B97. The <a href="https://www.ifrs.org/content/dam/ifrs/publications/pdf-standards/english/2022/issued/part-a/ifrs-17-insurance-contracts.pdf?bypass=on">IFRS Foundation’s standard text</a> contains these requirements.</li>
+<li id="note-2"><strong>Investment components and service presentation:</strong> see Appendix A, paragraphs 84–85 and B124. The IFRS Foundation’s <a href="https://www.ifrs.org/supporting-implementation/supporting-materials-by-ifrs-standards/ifrs-17/key-terms/">key terms</a> and <a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-17-insurance-contracts/">standard overview</a> provide accessible starting points. The claims example excludes loss-component allocations and additional LIC discounting/RA effects.</li>
+<li id="note-3"><strong>The investment-component comparison:</strong> B96(c) compares the actual amount becoming payable with the opening expectation updated for related finance effects. The <a href="https://www.ifrs.org/news-and-events/updates/iasb/2019/iasb-update-april-2019/">IASB’s explanation of the amendment</a> explicitly distinguishes finance from the CSM adjustment. The example’s 2 is a constructed financial update; the remaining 8 is not an ordinary subsequent re-estimation of an already established LIC.</li>
+<li id="note-4"><strong>VFA and finance presentation:</strong> paragraphs B101, B111–B115 and 87–89 govern the distinctions used here. See the <a href="https://standards.aasb.gov.au/aasb-17-dec-2022-0">public standard text maintained by the AASB</a>. The VFA comparison is a qualifying participating contract, not an optional reclassification of the fixed annuity.</li>
+</ol>
+<div class="series-nav"><a href="when-ifrs17-results-do-not-make-sense.html">Part 1 · When IFRS 17 Results Do Not Make Sense</a><br><a href="../insights.html">All insights</a></div><footer>Chen Liu, FIA · Independent actuarial commentary</footer></main></body></html>
